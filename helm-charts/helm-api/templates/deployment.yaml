@@ -42,11 +42,6 @@ spec:
       hostIPC: false
       securityContext:
         runAsNonRoot: true
-        {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
-        runAsUser: {{ .Values.runAsUser }}
-        {{- end }} 
-      nodeSelector:
-        master: "{{ .Values.nodeSelector.master }}"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -55,11 +50,9 @@ spec:
                 - key: beta.kubernetes.io/arch
                   operator: In
                   values:
-                  {{- if .Values.arch }}
-                  - {{ .Values.arch }}
-                  {{- else }}
-                  - {{ template "helmapi.arch" . }}
-                  {{- end }}
+                  - amd64
+                  - ppc64le
+                  - s390x
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
       containers:
@@ -68,12 +61,7 @@ spec:
         image: "{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
         imagePullPolicy: {{ .Values.auditService.image.pullPolicy }}
         securityContext:
-          seLinuxOptions:
-            type: spc_t
           runAsNonRoot: true
-          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
-          runAsUser: {{ .Values.runAsUser }}
-          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true
@@ -103,9 +91,6 @@ spec:
           protocol: "{{ .Values.rudder.ports.protocol }}"
         securityContext:
           runAsNonRoot: true
-          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
-          runAsUser: {{ .Values.runAsUser }}
-          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true
@@ -149,9 +134,6 @@ spec:
         imagePullPolicy: {{ .Values.helmapi.image.pullPolicy }}
         securityContext:
           runAsNonRoot: true
-          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
-          runAsUser: {{ .Values.runAsUser }}
-          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true

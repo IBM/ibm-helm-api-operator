@@ -1,19 +1,17 @@
 apiVersion: operator.ibm.com/v1alpha1
-kind: HelmApi
+kind: HelmAPI
 metadata:
-  name: example-helmapi
+  name: default-helm-api
 spec:
   # Default values copied from <project_dir>/helm-charts/helm-api/values.yaml
-  # Default values for chart2.
-  # This is a YAML-formatted file.
-  # Declare variables to be passed into your templates
+  
   arch: ""
   auditService:
     config:
       enabled: true
     image:
       pullPolicy: IfNotPresent
-      repository: quay.io/opencloudio/icp-helm-repo
+      repository: quay.io/opencloudio/icp-audit-service
       tag: 3.3.1
     name: icp-audit-service
   helmapi:
@@ -115,3 +113,4 @@ spec:
     mongoClientCertSecretName: icp-mongodb-client-cert
     rudderCertsName: rudder-certs
     rudderCertsSecretName: rudder-secret
+  

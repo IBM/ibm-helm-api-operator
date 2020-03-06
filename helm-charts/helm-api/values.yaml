@@ -1,10 +1,9 @@
-arch: ""
 auditService:
   config:
     enabled: true
   image:
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/icp-helm-repo
+    repository: quay.io/opencloudio/icp-audit-service
     tag: 3.3.1
   name: icp-audit-service
 helmapi:
@@ -61,8 +60,6 @@ helmapi:
     mongoCaName: mongodb-ca-cert
     mongoClientCertMountPath: /certs/mongodb-client
     mongoClientCertName: mongodb-client-cert
-nodeSelector:
-  master: "true"
 replicaCount: 1
 rudder:
   env:
@@ -90,7 +87,6 @@ rudder:
     rudderCacheName: rudder-cache
     rudderCertsMountPath: /etc/certs
     rudderCertsName: rudder-certs
-runAsUser: 65534
 tolerations:
 - effect: NoSchedule
   key: dedicated
