@@ -18,7 +18,7 @@ metadata:
               },
               "image": {
                 "pullPolicy": "IfNotPresent",
-                "repository": "cicd-quayecosystem-quay-cicd-quay.apps.dodgem.os.fyre.ibm.com/integration/icp-audit-service",
+                "repository": "quay.io/opencloudio/icp-audit-service",
                 "tag": "3.3.1"
               },
               "name": "icp-audit-service"
@@ -46,7 +46,7 @@ metadata:
               "image": {
                 "name": "helmapi",
                 "pullPolicy": "IfNotPresent",
-                "repository": "cicd-quayecosystem-quay-cicd-quay.apps.dodgem.os.fyre.ibm.com/integration/icp-helm-api",
+                "repository": "quay.io/opencloudio/icp-helm-api",
                 "tag": "3.3.0"
               },
               "resources": {
@@ -97,7 +97,7 @@ metadata:
               "image": {
                 "name": "rudder",
                 "pullPolicy": "IfNotPresent",
-                "repository": "cicd-quayecosystem-quay-cicd-quay.apps.dodgem.os.fyre.ibm.com/integration/icp-helm-rudder",
+                "repository": "quay.io/opencloudio/icp-helm-rudder",
                 "tag": "3.3.0"
               },
               "ports": {
