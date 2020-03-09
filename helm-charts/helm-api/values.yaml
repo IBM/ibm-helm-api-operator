@@ -60,17 +60,18 @@ helmapi:
     mongoCaName: mongodb-ca-cert
     mongoClientCertMountPath: /certs/mongodb-client
     mongoClientCertName: mongodb-client-cert
+nodeSelector: {}
 replicaCount: 1
 rudder:
   env:
     RUDDER_CLIENT_CERTS: /etc/certs
-    RUDDER_TILLER_ADDRESS: tiller-deploy.kube-system:44134
+    RUDDER_TILLER_ADDRESS: tiller-deploy:44134
     USE_TLS: "true"
   image:
     name: rudder
     pullPolicy: IfNotPresent
     repository: quay.io/opencloudio/icp-helm-rudder
-    tag: 3.2.2
+    tag: 3.3.0
   ports:
     containerPort: 5000
     containerPortName: p5000

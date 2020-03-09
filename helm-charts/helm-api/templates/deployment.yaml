@@ -37,11 +37,17 @@ spec:
         app.kubernetes.io/name: "helm-api"
         helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
+      serviceAccount: helm-api-sa
       hostNetwork: false
       hostPID: false
       hostIPC: false
       securityContext:
         runAsNonRoot: true
+        {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
+        runAsUser: {{ .Values.runAsUser }}
+        {{- end }} 
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -50,9 +56,11 @@ spec:
                 - key: beta.kubernetes.io/arch
                   operator: In
                   values:
-                  - amd64
-                  - ppc64le
-                  - s390x
+                  {{- if .Values.arch }}
+                  - {{ .Values.arch }}
+                  {{- else }}
+                  - {{ template "helmapi.arch" . }}
+                  {{- end }}
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
       containers:
@@ -61,7 +69,12 @@ spec:
         image: "{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
         imagePullPolicy: {{ .Values.auditService.image.pullPolicy }}
         securityContext:
+          seLinuxOptions:
+            type: spc_t
           runAsNonRoot: true
+          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
+          runAsUser: {{ .Values.runAsUser }}
+          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true
@@ -91,6 +104,9 @@ spec:
           protocol: "{{ .Values.rudder.ports.protocol }}"
         securityContext:
           runAsNonRoot: true
+          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
+          runAsUser: {{ .Values.runAsUser }}
+          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true
@@ -134,6 +150,9 @@ spec:
         imagePullPolicy: {{ .Values.helmapi.image.pullPolicy }}
         securityContext:
           runAsNonRoot: true
+          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
+          runAsUser: {{ .Values.runAsUser }}
+          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true

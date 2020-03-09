@@ -18,7 +18,7 @@ metadata:
               },
               "image": {
                 "pullPolicy": "IfNotPresent",
-                "repository": "quay.io/opencloudio/icp-audit-service",
+                "repository": "cicd-quayecosystem-quay-cicd-quay.apps.dodgem.os.fyre.ibm.com/integration/icp-audit-service",
                 "tag": "3.3.1"
               },
               "name": "icp-audit-service"
@@ -46,7 +46,7 @@ metadata:
               "image": {
                 "name": "helmapi",
                 "pullPolicy": "IfNotPresent",
-                "repository": "quay.io/opencloudio/icp-helm-api",
+                "repository": "cicd-quayecosystem-quay-cicd-quay.apps.dodgem.os.fyre.ibm.com/integration/icp-helm-api",
                 "tag": "3.3.0"
               },
               "resources": {
@@ -86,21 +86,19 @@ metadata:
                 "mongoClientCertName": "mongodb-client-cert"
               }
             },
-            "nodeSelector": {
-              "master": "true"
-            },
+            "nodeSelector": {},
             "replicaCount": 1,
             "rudder": {
               "env": {
                 "RUDDER_CLIENT_CERTS": "/etc/certs",
-                "RUDDER_TILLER_ADDRESS": "tiller-deploy.kube-system:44134",
+                "RUDDER_TILLER_ADDRESS": "tiller-deploy:44134",
                 "USE_TLS": "true"
               },
               "image": {
                 "name": "rudder",
                 "pullPolicy": "IfNotPresent",
-                "repository": "quay.io/opencloudio/icp-helm-rudder",
-                "tag": "3.2.2"
+                "repository": "cicd-quayecosystem-quay-cicd-quay.apps.dodgem.os.fyre.ibm.com/integration/icp-helm-rudder",
+                "tag": "3.3.0"
               },
               "ports": {
                 "containerPort": 5000,
@@ -140,7 +138,7 @@ metadata:
               "helmApiCertsName": "helmapi-certs",
               "helmApiCertsSecretName": "helmapi-secret",
               "mongoCaCertName": "mongodb-ca-cert",
-              "mongoCaCertSecretName": "cluster-ca-cert",
+              "mongoCaCertSecretName": "mongodb-root-ca-cert",
               "mongoClientCertName": "mongodb-client-cert",
               "mongoClientCertSecretName": "icp-mongodb-client-cert",
               "rudderCertsName": "rudder-certs",
@@ -151,7 +149,7 @@ metadata:
       ]
     capabilities: Basic Install
   name: ibm-helm-api-operator.v0.0.1
-  namespace: placeholder
+  namespace: ibm-common-services
 spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
@@ -168,6 +166,37 @@ spec:
     mediatype: image/png
   install:
     spec:
+      clusterPermissions:
+      - rules:
+        - apiGroups:
+          - certmanager.k8s.io
+          resources:
+          - clusterissuers
+          verbs:
+          - use
+        - apiGroups:
+          - rbac.authorization.k8s.io
+          resources:
+          - clusterroles
+          - rolebindings
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - security.openshift.io
+          resourceNames:
+          - hostaccess
+          - privileged
+          resources:
+          - securitycontextconstraints
+          verbs:
+          - use
+        serviceAccountName: ibm-helm-api-operator
       deployments:
       - name: ibm-helm-api-operator
         spec:
@@ -203,14 +232,15 @@ spec:
         - apiGroups:
           - ""
           resources:
+          - configmaps
+          - endpoints
+          - events
+          - persistentvolumeclaims
           - pods
+          - secrets
+          - serviceaccounts
           - services
           - services/finalizers
-          - endpoints
-          - persistentvolumeclaims
-          - events
-          - configmaps
-          - secrets
           verbs:
           - create
           - delete
@@ -219,6 +249,25 @@ spec:
           - patch
           - update
           - watch
+        - apiGroups:
+          - ""
+          resources:
+          - namespaces
+          verbs:
+          - '*'
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          - secrets
+          verbs:
+          - '*'
+        - apiGroups:
+          - ""
+          resources:
+          - events
+          verbs:
+          - create
         - apiGroups:
           - apps
           resources:
@@ -235,31 +284,12 @@ spec:
           - update
           - watch
         - apiGroups:
-          - ""
+          - apps
           resources:
-          - namespaces
+          - replicasets
+          - deployments
           verbs:
           - get
-        - apiGroups:
-          - ""
-          resources:
-          - configmaps
-          - secrets
-          verbs:
-          - '*'
-        - apiGroups:
-          - ""
-          resources:
-          - events
-          verbs:
-          - create
-        - apiGroups:
-          - monitoring.coreos.com
-          resources:
-          - servicemonitors
-          verbs:
-          - get
-          - create
         - apiGroups:
           - apps
           resourceNames:
@@ -269,18 +299,36 @@ spec:
           verbs:
           - update
         - apiGroups:
-          - ""
+          - certmanager.k8s.io
           resources:
-          - pods
+          - certificates
           verbs:
+          - create
+          - delete
           - get
+          - list
+          - patch
+          - update
+          - watch
         - apiGroups:
-          - apps
+          - extensions
           resources:
-          - replicasets
-          - deployments
+          - ingresses
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - monitoring.coreos.com
+          resources:
+          - servicemonitors
           verbs:
           - get
+          - create
         - apiGroups:
           - operator.ibm.com
           resources:
