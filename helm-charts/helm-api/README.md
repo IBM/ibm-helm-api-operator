@@ -181,7 +181,7 @@ Parameter                                        | Description                  
 `helmapi.volumeMounts.helmApiCertsName`          | helmapi certs mount name                                  | helmapi-certs                       
 `helmapi.volumeMounts.helmApiCertsMountPath`     | helmapi certs mount path                                  | /etc/certs                             
 `helmapi.env.CLUSTER_CA_DOMAIN`                  | cluster domain name                                       | mycluster.icp                           
-`helmapi.env.CLUSTER_PORT`                       | cluster port                                              | 8443                                    
+`helmapi.env.CLUSTER_PORT`                       | cluster port                                              | 443                                    
 `helmapi.env.DBHOST`                             | mongoDB host name                                         | mongodb                                 
 `helmapi.env.DBPORT`                             | mongoDB port                                              | 27017                                   
 `helmapi.env.HTTPS_PROXY`                        | helmapi HTTPS proxy server                                | ""                                      

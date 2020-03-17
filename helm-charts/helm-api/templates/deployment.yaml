@@ -242,11 +242,14 @@ spec:
         - name: PORT
           value: "{{ .Values.helmapi.service.port }}"
         - name: "CLUSTER_CA_DOMAIN"
-          value: "{{ .Values.helmapi.env.CLUSTER_CA_DOMAIN }}"
+          valueFrom:
+            configMapKeyRef:
+              name: management-ingress-info
+              key: MANAGEMENT_INGRESS_ROUTE_HOST
         - name: SET_TLS
           value: "{{ .Values.helmapi.env.SET_TLS }}"
         - name: SERVICE_NAME
-          value: {{ .Values.helmapi.image.name }}
+          value: "helm-api"
         - name: POD_NAME
           valueFrom:
             fieldRef:
