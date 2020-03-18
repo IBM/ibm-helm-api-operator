@@ -45,9 +45,14 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''
         seccomp.security.alpha.kubernetes.io/pod: docker/default
+        productName: IBM Cloud Platform Common Services
+        productID: "068a62892a1e4db39641342e592daa25"
+        productVersion: "3.3.0"
+        productMetric: FREE
       labels:
         app: helm
         name: tiller
+        app.kubernetes.io/instance: tiller-deploy
     spec:
       containers:
       - env:
