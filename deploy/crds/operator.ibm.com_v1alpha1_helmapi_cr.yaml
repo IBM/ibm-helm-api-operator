@@ -17,7 +17,7 @@ spec:
   helmapi:
     env:
       CLUSTER_CA_DOMAIN: mycluster.icp
-      CLUSTER_PORT: 8443
+      CLUSTER_PORT: 443
       DBHOST: mongodb
       DBPORT: "27017"
       HTTP_PROXY: ""
@@ -28,8 +28,7 @@ spec:
       MONGO_SSL_CA: /certs/mongodb-ca/tls.crt
       MONGO_SSL_CERT: /certs/mongodb-client/tls.crt
       MONGO_SSL_KEY: /certs/mongodb-client/tls.key
-      NO_PROXY: mycluster.icp,mongodb,platform-identity-provider,icp-management-ingress,
-        iam-pap,localhost,127.0.0.1
+      NO_PROXY: mycluster.icp,mongodb,platform-identity-provider,platform-identity-management,icp-management-ingress,iam-pap,localhost,127.0.0.1
       PROXY_EXTERNAL_ADDR: proxy_external_address
       PROXY_ROUTE: helm-api
       SET_TLS: "true"
@@ -112,4 +111,19 @@ spec:
     mongoClientCertSecretName: icp-mongodb-client-cert
     rudderCertsName: rudder-certs
     rudderCertsSecretName: rudder-secret
-  
+tiller:
+  defaultAdminUser: admin
+  image:
+    name: tiller
+    pullPolicy: IfNotPresent
+    repository: quay.io/opencloudio/tiller
+    tag: v2.16.1-icp-3.2.2
+  nodePort: 31514
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  runAsUser: 65534
