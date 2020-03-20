@@ -15,5 +15,19 @@
 #
 FROM quay.io/operator-framework/helm-operator:v0.15.2
 
+LABEL org.label-schema.vendor="IBM" \
+    org.label-schema.name="ibm-helm-api-operator" \
+    org.label-schema.description="IBM Helm API Operator" \
+    org.label-schema.vcs-ref=$VCS_REF \
+    org.label-schema.vcs-url=$VCS_URL \
+    org.label-schema.license="Licensed Materials - Property of IBM" \
+    org.label-schema.schema-version="1.0" \
+    name="ibm-helm-api-operator" \
+    vendor="IBM" \
+    description="IBM Helm API Operator" \
+    summary="IBM Helm API Operator" \
+    release=$VCS_REF
+
 COPY watches.yaml ${HOME}/watches.yaml
 COPY helm-charts/ ${HOME}/helm-charts/
+COPY LICENSE /licenses/
