@@ -250,5 +250,4 @@ spec:
   maturity: alpha
   provider:
     name: IBM
-  replaces: ibm-helm-api-operator.v0.0.1
   version: 3.5.0
