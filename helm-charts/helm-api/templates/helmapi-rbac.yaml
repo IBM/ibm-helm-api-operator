@@ -14,6 +14,7 @@ rules:
   - configmaps
   - endpoints
   - events
+  - namespaces
   - persistentvolumeclaims
   - pods
   - secrets
