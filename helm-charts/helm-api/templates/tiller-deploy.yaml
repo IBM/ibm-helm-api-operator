@@ -110,7 +110,7 @@ spec:
       schedulerName: default-scheduler
       securityContext:
         runAsNonRoot: true
-        runAsUser: {{ .Values.tiller.runAsUser }}
+        runAsUser: {{ .Values.runAsUser }}
       serviceAccount: tiller-sa
       terminationGracePeriodSeconds: 30
       tolerations:
