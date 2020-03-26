@@ -11,7 +11,6 @@ metadata:
             "name": "helm-api"
           },
           "spec": {
-            "arch": "",
             "auditService": {
               "config": {
                 "enabled": true
@@ -123,17 +122,26 @@ metadata:
               }
             },
             "runAsUser": 65534,
-            "tolerations": [
-              {
-                "effect": "NoSchedule",
-                "key": "dedicated",
-                "operator": "Exists"
+            "tiller": {
+              "defaultAdminUser": "admin",
+              "image": {
+                "name": "tiller",
+                "pullPolicy": "IfNotPresent",
+                "repository": "quay.io/opencloudio/tiller",
+                "tag": "v2.16.1-cs-3.3.0"
               },
-              {
-                "key": "CriticalAddonsOnly",
-                "operator": "Exists"
+              "nodePort": 31514,
+              "resources": {
+                "limits": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
               }
-            ],
+            },
             "volumes": {
               "helmApiCertsName": "helmapi-certs",
               "helmApiCertsSecretName": "helmapi-secret",
@@ -144,27 +152,6 @@ metadata:
               "rudderCertsName": "rudder-certs",
               "rudderCertsSecretName": "rudder-secret"
             }
-          },
-          "tiller": {
-            "defaultAdminUser": "admin",
-            "image": {
-              "name": "tiller",
-              "pullPolicy": "IfNotPresent",
-              "repository": "quay.io/opencloudio/tiller",
-              "tag": "v2.16.1-icp-3.2.2"
-            },
-            "nodePort": 31514,
-            "resources": {
-              "limits": {
-                "cpu": "100m",
-                "memory": "128Mi"
-              },
-              "requests": {
-                "cpu": "100m",
-                "memory": "128Mi"
-              }
-            },
-            "runAsUser": 65534
           }
         }
       ]
@@ -179,6 +166,63 @@ spec:
       displayName: HelmAPI
       kind: HelmAPI
       name: helmapis.operator.ibm.com
+      resources:
+      - kind: Deployment
+        name: Deployment
+        version: v1
+      - kind: Ingress
+        name: Ingress
+        version: extensions/v1beta1
+      - kind: ReplicaSet
+        name: ReplicaSet
+        version: v1
+      - kind: Pod
+        name: Pod
+        version: v1
+      - kind: Secret
+        name: Secret
+        version: v1
+      - kind: Service
+        name: Service
+        version: v1
+      - kind: ServiceAccount
+        name: ServiceAccount
+        version: v1
+      specDescriptors:
+      - description: Audit service
+        displayName: Helm API audit logging component
+        path: auditService
+      - description: REST API component for helm charts and releases
+        displayName: Helm API
+        path: helmapi
+      - description: Database component for storing chart information
+        displayName: MongoDB
+        path: mongo
+      - description: Criteria for selecting node to run on
+        displayName: Node selector criteria
+        path: nodeSelector
+      - description: How many pods to run simultaneously
+        displayName: Replica count
+        path: replicaCount
+      - description: Bridge between Helm API and Helm server
+        displayName: Rudder component
+        path: rudder
+      - description: What user to run as
+        displayName: Run as User
+        path: runAsUser
+      - description: Tiller component
+        displayName: Tiller
+        path: tiller
+      - description: Volumes for helm API and Mongo certs and secrets
+        displayName: Helm API volumes
+        path: volumes
+      statusDescriptors:
+      - description: Conditions contains the observed states of the Helm release
+        displayName: Conditions
+        path: conditions
+      - description: Deployed Release shows the manifest of the deployed Helm release
+        displayName: Deployed Release
+        path: deployedRelease
       version: v1alpha1
   description: Helm API provides a RESTful API service for Helm-Tiller
   displayName: IBM Helm API Operator
@@ -226,7 +270,7 @@ spec:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: ibm-helm-api-operator
-                image: quay.io/opencloudio/ibm-helm-api-operator:v3.5.0
+                image: quay.io/opencloudio/ibm-helm-api-operator:3.5.0
                 imagePullPolicy: Always
                 name: ibm-helm-api-operator
                 resources: {}

@@ -1,14 +1,16 @@
-# Licensed Materials - Property of IBM
-# (C) Copyright IBM Corporation 2016, 2020. All Rights Reserved.
-# US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: helm
-    name: tiller
+    app: "helm-api"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    app.kubernetes.io/name: "helm-api"
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
   name: tiller-deploy
   namespace: {{ .Release.Namespace }}
 spec:
@@ -30,8 +32,14 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   labels:
-    app: helm
-    name: tiller
+    app: "helm-api"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    app.kubernetes.io/name: "helm-api"
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
   name: tiller-deploy
   namespace: {{ .Release.Namespace }}
 spec:
@@ -127,8 +135,3 @@ spec:
         secret:
           defaultMode: 420
           secretName: tiller-secret
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
