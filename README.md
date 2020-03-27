@@ -1,4 +1,4 @@
-# ibm-helm-api-operator
+# IBM Helm API Operator
 
 Operator used to manager IBM Helm API service. Helm API provides REST endpoints for accessing Helm charts, releases, and repos.
 
