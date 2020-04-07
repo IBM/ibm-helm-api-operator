@@ -164,10 +164,8 @@ spec:
                       type: string
                     mongoClientCertName: 
                       type: string
-              x-kubernetes-preserve-unknown-fields: true
             nodeSelector:
               type: object
-              x-kubernetes-preserve-unknown-fields: true
             replicaCount:
               type: integer
             rudder:
@@ -230,7 +228,6 @@ spec:
                       type: string
                     rudderCertsName:
                       type: string
-              x-kubernetes-preserve-unknown-fields: true
             runAsUser:
               type: integer
             tiller:
@@ -268,7 +265,6 @@ spec:
                           type: string
                         memory: 
                           type: string
-              x-kubernetes-preserve-unknown-fields: true
             volumes:
               type: object
               properties:
@@ -287,15 +283,13 @@ spec:
                 rudderCertsName: 
                   type: string
                 rudderCertsSecretName: 
-                  type: string
-              x-kubernetes-preserve-unknown-fields: true                            
+                  type: string                           
           required:
           - helmapi
           - rudder
           - runAsUser
           - tiller
           type: object
-          x-kubernetes-preserve-unknown-fields: true
         status:
           properties:
             conditions:
