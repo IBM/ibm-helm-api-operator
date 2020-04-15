@@ -160,9 +160,9 @@ metadata:
     certified: "false"
     containerImage: quay.io/opencloudio/ibm-helm-api-operator:3.6.0
     createdAt: "2020-03-24T01:00:00Z"
-    description: The HelmAPI operator provides a simple Kubernetes CRD-Based API
-      to manage the lifecycle of HelmAPI. With this operator, you can simply deploy
-      and upgrade helm-api.
+    description: The HelmAPI operator provides a simple Kubernetes CRD-Based API to
+      manage the lifecycle of HelmAPI. With this operator, you can simply deploy and
+      upgrade helm-api.
     repository: https://github.com/IBM/ibm-helm-api-operator
     support: IBM
   name: ibm-helm-api-operator.v3.6.0
@@ -303,5 +303,5 @@ spec:
   maturity: alpha
   provider:
     name: IBM
-  version: 3.6.0
   replaces: ibm-helm-api-operator.v3.5.0
+  version: 3.6.0
