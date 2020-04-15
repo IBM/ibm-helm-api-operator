@@ -14,7 +14,7 @@ Operator used to manager IBM Helm API service. Helm API provides REST endpoints 
 
 ## Operator versions
 
-- 3.5.0
+- 3.6.0
 
 ## Prerequisites
 
@@ -60,7 +60,7 @@ Information about building and testing the operator.
 Check the Cluster Service Version (CSV) installation status
 ```
 # oc get csv
-# oc describe csv ibm-helm-api-operator.v3.5.0
+# oc describe csv ibm-helm-api-operator.v3.6.0
 ```
 
 Check the custom resource status
