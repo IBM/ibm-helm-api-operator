@@ -20,7 +20,17 @@ metadata:
                 "repository": "quay.io/opencloudio/icp-audit-service",
                 "tag": "3.4.0"
               },
-              "name": "icp-audit-service"
+              "name": "icp-audit-service",
+              "resources": {
+                "limits": {
+                  "cpu": "100m",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "512Mi"
+                }
+              }
             },
             "helmapi": {
               "env": {
@@ -54,8 +64,8 @@ metadata:
                   "memory": "400Mi"
                 },
                 "requests": {
-                  "cpu": "200m",
-                  "memory": "300Mi"
+                  "cpu": "300m",
+                  "memory": "400Mi"
                 }
               },
               "secretKeyRef": {
@@ -110,7 +120,7 @@ metadata:
                   "memory": "128Mi"
                 },
                 "requests": {
-                  "cpu": "100m",
+                  "cpu": "150m",
                   "memory": "128Mi"
                 }
               },
