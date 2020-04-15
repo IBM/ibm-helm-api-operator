@@ -31,7 +31,7 @@ NAMESPACE=ibm-common-services
 # Use your own docker registry and image name for dev/test by overridding the IMG and REGISTRY environment variable.
 IMG ?= ibm-helm-api-operator
 REGISTRY ?= quay.io/opencloudio
-CSV_VERSION ?= 3.6.0
+CSV_VERSION ?= 3.5.0 #TODO change this to 3.6.0 before merging
 
 QUAY_USERNAME ?=
 QUAY_PASSWORD ?=
