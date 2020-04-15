@@ -47,7 +47,6 @@ spec:
                       type: string
                 name:
                   type: string
-              x-kubernetes-preserve-unknown-fields: true
             helmapi:
               type: object
               properties:
@@ -247,7 +246,7 @@ spec:
                     tag:
                       type: string
                 nodePort:
-                  type: integer #maybe string?
+                  type: integer
                 resources:
                   type: object
                   properties:
