@@ -148,7 +148,7 @@ spec:
                       type: string
                     path:
                       type: string
-                volumemounts:
+                volumeMounts:
                   type: object
                   properties:
                     helmApiCertsMountPath: 
