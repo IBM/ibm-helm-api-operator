@@ -6,6 +6,13 @@ auditService:
     repository: quay.io/opencloudio/icp-audit-service
     tag: 3.4.0
   name: icp-audit-service
+  resources:
+    limits:
+      cpu: 100m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 512Mi
 helmapi:
   env:
     CLUSTER_CA_DOMAIN: mycluster.icp
@@ -35,8 +42,8 @@ helmapi:
       cpu: 300m
       memory: 400Mi
     requests:
-      cpu: 200m
-      memory: 300Mi
+      cpu: 300m
+      memory: 400Mi
   secretKeyRef:
     clientIdSecretKey: WLP_CLIENT_ID
     clientIdSecretName: platform-oidc-credentials
@@ -80,7 +87,7 @@ rudder:
       cpu: 150m
       memory: 128Mi
     requests:
-      cpu: 100m
+      cpu: 150m
       memory: 128Mi
   volumeMounts:
     rudderCacheMountPath: /opt/rudder/cache
