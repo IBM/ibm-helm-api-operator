@@ -10,7 +10,8 @@ spec:
       enabled: true
     image:
       pullPolicy: IfNotPresent
-      repository: quay.io/opencloudio/icp-audit-service
+      imageRegistry: quay.io/cloudio
+      repository: icp-audit-service
       tag: 3.4.0
     name: icp-audit-service
   helmapi:
@@ -35,7 +36,8 @@ spec:
     image:
       name: helmapi
       pullPolicy: IfNotPresent
-      repository: quay.io/opencloudio/icp-helm-api
+      imageRegistry: quay.io/cloudio
+      repository: icp-helm-api
       tag: 3.3.0
     resources:
       limits:
@@ -76,7 +78,8 @@ spec:
     image:
       name: rudder
       pullPolicy: IfNotPresent
-      repository: quay.io/opencloudio/icp-helm-rudder
+      imageRegistry: quay.io/cloudio
+      repository: icp-helm-rudder
       tag: 3.3.0
     ports:
       containerPort: 5000
@@ -100,7 +103,8 @@ spec:
     image:
       name: tiller
       pullPolicy: IfNotPresent
-      repository: quay.io/opencloudio/tiller
+      imageRegistry: quay.io/cloudio
+      repository: tiller
       tag: v2.16.1-cs-3.3.0
     nodePort: 31514
     resources:

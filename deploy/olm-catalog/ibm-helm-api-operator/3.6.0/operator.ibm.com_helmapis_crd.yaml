@@ -41,6 +41,8 @@ spec:
                   properties:
                     pullPolicy:
                       type: string
+                    imageRegistry:
+                      type: string
                     repository:
                       type: string
                     tag:
@@ -94,6 +96,8 @@ spec:
                     name:
                       type: string
                     pullPolicy:
+                      type: string
+                    imageRegistry:
                       type: string
                     repository:
                       type: string
@@ -187,6 +191,8 @@ spec:
                       type: string
                     pullPolicy:
                       type: string
+                    imageRegistry:
+                      type: string
                     repository:
                       type: string
                     tag:
@@ -242,12 +248,14 @@ spec:
                       type: string
                     pullPolicy:
                       type: string
+                    imageRegistry:
+                      type: string
                     repository:
                       type: string
                     tag:
                       type: string
                 nodePort:
-                  type: integer #maybe string?
+                  type: integer
                 resources:
                   type: object
                   properties:
