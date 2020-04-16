@@ -2,6 +2,11 @@ apiVersion: operator.ibm.com/v1alpha1
 kind: HelmAPI
 metadata:
   name: helm-api
+  labels:
+      name: ibm-helm-api-operator
+      app.kubernetes.io/instance: helmapis.operator.ibm.com
+      app.kubernetes.io/managed-by: helmapis.operator.ibm.com
+      app.kubernetes.io/name: helmapis.operator.ibm.com
 spec:
   # Default values copied from <project_dir>/helm-charts/helm-api/values.yaml
 

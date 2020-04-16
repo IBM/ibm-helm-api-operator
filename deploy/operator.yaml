@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ibm-helm-api-operator
+  labels:
+      name: ibm-helm-api-operator
+      app.kubernetes.io/instance: helmapis.operator.ibm.com
+      app.kubernetes.io/managed-by: helmapis.operator.ibm.com
+      app.kubernetes.io/name: helmapis.operator.ibm.com
 spec:
   replicas: 1
   selector:
