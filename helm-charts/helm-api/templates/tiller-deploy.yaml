@@ -61,7 +61,9 @@ spec:
       labels:
         app: helm
         name: tiller
-        app.kubernetes.io/instance: tiller-deploy
+        app.kubernetes.io/instance: "{{ .Release.Name }}"
+        app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+        app.kubernetes.io/name: tiller
     spec:
       containers:
       - env:
