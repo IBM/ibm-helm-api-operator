@@ -47,7 +47,7 @@ images:
         env: ARTIFACTORY_APIKEY
     platform:
       os: linux
-      architecture: amd64
+      arch: amd64
   - repository : icp-helm-rudder-ppc64le:3.2.2
     pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-ppc64le/icp-helm-rudder:3.2.2
     pull-authorization:
@@ -57,7 +57,7 @@ images:
         env: ARTIFACTORY_APIKEY
     platform:
       os: linux
-      architecture: ppc64le
+      arch: ppc64le
   - repository : icp-helm-rudder-s390x:3.2.2
     pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-s390x/icp-helm-rudder:3.2.2
     pull-authorization:
@@ -67,4 +67,4 @@ images:
         env: ARTIFACTORY_APIKEY
     platform:
       os: linux
-      architecture: s390x
+      arch: s390x
