@@ -9,11 +9,11 @@ auditService:
   name: icp-audit-service
   resources:
     limits:
-      cpu: 100m
-      memory: 512Mi
+      cpu: 200m
+      memory: 250Mi
     requests:
-      cpu: 100m
-      memory: 512Mi
+      cpu: 200m
+      memory: 250Mi
 helmapi:
   env:
     CLUSTER_CA_DOMAIN: mycluster.icp
