@@ -1,0 +1,70 @@
+images:
+- image: icp-helm-api:3.3.0
+  references:
+  - repository: icp-helm-api:3.3.0
+    pull-repository: quay.io/opencloudio/icp-helm-api:3.3.0
+    platform:
+      os: linux
+      arch: amd64
+  - repository: icp-helm-api:3.3.0
+    pull-repository: quay.io/opencloudio/icp-helm-api:3.3.0
+    platform:
+      os: linux
+      arch: ppc64le
+  - repository: icp-helm-api:3.3.0
+    pull-repository: quay.io/opencloudio/icp-helm-api:3.3.0
+    platform:
+      os: linux
+      arch: s390x
+
+- image: icp-audit-service:3.4.0
+  references:
+  - repository: icp-audit-service:3.4.0
+    pull-repository: quay.io/opencloudio/icp-audit-service:3.4.0
+    platform:
+      os: linux
+      arch: amd64
+  - repository: icp-audit-service:3.4.0
+    pull-repository: quay.io/opencloudio/icp-audit-service:3.4.0
+    platform:
+      os: linux
+      arch: ppc64le
+  - repository: icp-audit-service:3.4.0
+    pull-repository: quay.io/opencloudio/icp-audit-service:3.4.0
+    platform:
+      os: linux
+      arch: s390x
+
+#this will need to be replaced with a quay.io version
+- image: icp-helm-rudder:3.2.2 
+  references:	
+  - repository : icp-helm-rudder-amd64:3.2.2
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-amd64/icp-helm-rudder:3.2.2
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: amd64
+  - repository : icp-helm-rudder-ppc64le:3.2.2
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-ppc64le/icp-helm-rudder:3.2.2
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: ppc64le
+  - repository : icp-helm-rudder-s390x:3.2.2
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-s390x/icp-helm-rudder:3.2.2
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: s390x
