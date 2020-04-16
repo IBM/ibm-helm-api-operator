@@ -17,7 +17,7 @@ metadata:
               },
               "image": {
                 "pullPolicy": "IfNotPresent",
-                "imageRegistry": "quay.io/cloudio",
+                "imageRegistry": "quay.io/opencloudio",
                 "repository": "icp-audit-service",
                 "tag": "3.4.0"
               },
@@ -46,7 +46,7 @@ metadata:
               "image": {
                 "name": "helmapi",
                 "pullPolicy": "IfNotPresent",
-                "imageRegistry": "quay.io/cloudio",
+                "imageRegistry": "quay.io/opencloudio",
                 "repository": "icp-helm-api",
                 "tag": "3.3.0"
               },
@@ -98,7 +98,7 @@ metadata:
               "image": {
                 "name": "rudder",
                 "pullPolicy": "IfNotPresent",
-                "imageRegistry": "quay.io/cloudio",
+                "imageRegistry": "quay.io/opencloudio",
                 "repository": "icp-helm-rudder",
                 "tag": "3.3.0"
               },
@@ -130,7 +130,7 @@ metadata:
               "image": {
                 "name": "tiller",
                 "pullPolicy": "IfNotPresent",
-                "imageRegistry": "quay.io/cloudio",
+                "imageRegistry": "quay.io/opencloudio",
                 "repository": "tiller",
                 "tag": "v2.16.1-cs-3.3.0"
               },
