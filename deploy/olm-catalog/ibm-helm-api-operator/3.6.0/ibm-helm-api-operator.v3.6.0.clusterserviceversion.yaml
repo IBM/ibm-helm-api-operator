@@ -17,7 +17,8 @@ metadata:
               },
               "image": {
                 "pullPolicy": "IfNotPresent",
-                "repository": "quay.io/opencloudio/icp-audit-service",
+                "imageRegistry": "quay.io/opencloudio",
+                "repository": "icp-audit-service",
                 "tag": "3.4.0"
               },
               "name": "icp-audit-service",
@@ -55,7 +56,8 @@ metadata:
               "image": {
                 "name": "helmapi",
                 "pullPolicy": "IfNotPresent",
-                "repository": "quay.io/opencloudio/icp-helm-api",
+                "imageRegistry": "quay.io/opencloudio",
+                "repository": "icp-helm-api",
                 "tag": "3.3.0"
               },
               "resources": {
@@ -106,7 +108,8 @@ metadata:
               "image": {
                 "name": "rudder",
                 "pullPolicy": "IfNotPresent",
-                "repository": "quay.io/opencloudio/icp-helm-rudder",
+                "imageRegistry": "quay.io/opencloudio",
+                "repository": "icp-helm-rudder",
                 "tag": "3.3.0"
               },
               "ports": {
@@ -137,7 +140,8 @@ metadata:
               "image": {
                 "name": "tiller",
                 "pullPolicy": "IfNotPresent",
-                "repository": "quay.io/opencloudio/tiller",
+                "imageRegistry": "quay.io/opencloudio",
+                "repository": "tiller",
                 "tag": "v2.16.1-cs-3.3.0"
               },
               "nodePort": 31514,
