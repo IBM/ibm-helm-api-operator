@@ -61,8 +61,8 @@ spec:
       labels:
         app: helm
         name: tiller
-        app.kubernetes.io/instance: "{{ .Release.Name }}"
-        app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+        app.kubernetes.io/instance: tiller-deploy-helmapis-operator
+        app.kubernetes.io/managed-by: helmapis.operator.ibm.com
         app.kubernetes.io/name: tiller
     spec:
       containers:

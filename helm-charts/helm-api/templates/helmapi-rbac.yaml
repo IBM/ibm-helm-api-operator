@@ -80,8 +80,8 @@ metadata:
   name: helm-api-privileged
   labels:
     name: helm-api-privileged
-    app.kubernetes.io/instance: "{{ .Release.Name }}"
-    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    app.kubernetes.io/instance: helmapis.operator.ibm.com
+    app.kubernetes.io/managed-by: helmapis.operator.ibm.com
     app.kubernetes.io/name: helm-api-privileged
 subjects:
 - kind: ServiceAccount
