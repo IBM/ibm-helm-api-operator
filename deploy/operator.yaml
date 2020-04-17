@@ -25,7 +25,6 @@ spec:
         productVersion: "3.3.0"
         productMetric: FREE
     spec:
-      #serviceAccountName: ibm-helm-api-operator
       - name: ibm-helm-api-operator
       # Replace this with the built image name
         image: quay.io/opencloudio/ibm-helm-api-operator:3.5.0 #TODO change back to 3.6.0 when available
@@ -58,3 +57,4 @@ spec:
             requests:
               cpu: 200m
               memory: 300Mi
+      serviceAccountName: ibm-helm-api-operator
