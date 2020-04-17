@@ -78,3 +78,7 @@ Check the operator status and log
 #### End-to-End testing using Operand Deployment Lifecycle Manager
 
 See [ODLM guide](https://github.com/IBM/operand-deployment-lifecycle-manager/blob/master/docs/install/common-service-integration.md#end-to-end-test)
+
+# PodSecurityPolicy Requirements
+
+# SecurityContextConstraints Requirements
