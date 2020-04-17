@@ -57,4 +57,4 @@ spec:
             requests:
               cpu: 200m
               memory: 300Mi
-      serviceAccountName: ibm-helm-api-operator
+      - serviceAccountName: ibm-helm-api-operator
