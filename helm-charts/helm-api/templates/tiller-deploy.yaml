@@ -122,6 +122,10 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: {{ .Values.runAsUser }}
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
       serviceAccount: tiller-sa
       terminationGracePeriodSeconds: 30
       tolerations:
