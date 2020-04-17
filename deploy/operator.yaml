@@ -31,6 +31,13 @@ spec:
           # Replace this with the built image name
           image: quay.io/opencloudio/ibm-helm-api-operator:3.5.0 #TODO change back to 3.6.0 when available
           imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 300m
+            memory: 400Mi
+          requests:
+            cpu: 200m
+            memory: 300Mi
           env:
             - name: WATCH_NAMESPACE
               valueFrom:
