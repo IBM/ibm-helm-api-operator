@@ -27,7 +27,7 @@ spec:
     spec:
       serviceAccountName: ibm-helm-api-operator
       containers:
-        - name: ibm-helm-api-operator
+        name: ibm-helm-api-operator
           # Replace this with the built image name
           image: quay.io/opencloudio/ibm-helm-api-operator:3.6.0
           imagePullPolicy: Always
@@ -51,10 +51,10 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1001
-        - resources:
-            limits:
-              cpu: 300m
-              memory: 400Mi
-            requests:
-              cpu: 200m
-              memory: 300Mi
+        resources:
+          limits:
+            cpu: 300m
+            memory: 400Mi
+          requests:
+            cpu: 200m
+            memory: 300Mi
