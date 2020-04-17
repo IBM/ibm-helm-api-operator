@@ -51,7 +51,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1001
-        resources:
+        - resources:
           limits:
             cpu: 300m
             memory: 400Mi
