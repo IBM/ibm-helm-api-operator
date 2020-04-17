@@ -36,10 +36,6 @@ spec:
           readOnlyRootFilesystem: true
           runAsNonRoot: true
           runAsUser: 1001
-        - name: ibm-helm-api-operator
-          # Replace this with the built image name
-          image: quay.io/opencloudio/ibm-helm-api-operator:3.5.0 #TODO change back to 3.6.0 when available
-          imagePullPolicy: Always
         resources:
           limits:
             cpu: 300m
@@ -47,6 +43,10 @@ spec:
           requests:
             cpu: 200m
             memory: 300Mi
+        - name: ibm-helm-api-operator
+          # Replace this with the built image name
+          image: quay.io/opencloudio/ibm-helm-api-operator:3.5.0 #TODO change back to 3.6.0 when available
+          imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
               valueFrom:
