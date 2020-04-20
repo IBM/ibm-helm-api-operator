@@ -521,11 +521,12 @@ tiller:
     label: "Tiller"
     description: "Tiller component"
   defaultAdminUser: 
-    __metadata:
-      label: "Tiller default admin user"
-      description: "Tiller default admin user"
-      type: "string"
-      required: "true"
+      __metadata:
+        label: "Tiller default admin user"
+        description: "Tiller default admin user"
+        type: "string"
+        required: true
+        immutable: false
   image:
     name:
       __metadata:
