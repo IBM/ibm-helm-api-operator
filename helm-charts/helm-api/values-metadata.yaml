@@ -523,7 +523,7 @@ tiller:
   defaultAdminUser: 
     __metadata:
     label: "Tiller default admin user"
-    description:
+    description: "Tiller default admin user"
     type: "string"
     required: "true"
   image:
