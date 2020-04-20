@@ -36,35 +36,20 @@ images:
       arch: s390x
 
 #this will need to be replaced with a quay.io version
-- image: icp-helm-rudder:3.2.2 
+- image: icp-helm-rudder:3.3.0 
   references:	
-  - repository : icp-helm-rudder-amd64:3.2.2
-    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-amd64/icp-helm-rudder:3.2.2
-    pull-authorization:
-      username:
-        env: ARTIFACTORY_USERNAME
-      password:
-        env: ARTIFACTORY_APIKEY
+  - repository : icp-helm-rudder:3.3.0-amd64
+    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.0-amd64
     platform:
       os: linux
       arch: amd64
-  - repository : icp-helm-rudder-ppc64le:3.2.2
-    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-ppc64le/icp-helm-rudder:3.2.2
-    pull-authorization:
-      username:
-        env: ARTIFACTORY_USERNAME
-      password:
-        env: ARTIFACTORY_APIKEY
+  - repository : icp-helm-rudder:3.3.0-ppc64le
+    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.0-ppc64le
     platform:
       os: linux
       arch: ppc64le
-  - repository : icp-helm-rudder-s390x:3.2.2
-    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-s390x/icp-helm-rudder:3.2.2
-    pull-authorization:
-      username:
-        env: ARTIFACTORY_USERNAME
-      password:
-        env: ARTIFACTORY_APIKEY
+  - repository : icp-helm-rudder:3.3.0-s390x
+    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.0-s390x
     platform:
       os: linux
       arch: s390x
