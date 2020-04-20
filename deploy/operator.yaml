@@ -26,6 +26,9 @@ spec:
         productMetric: FREE
     spec:
       serviceAccountName: ibm-helm-api-operator
+      hostNetwork: false
+      hostPID: false
+      hostIPC: false
       containers:
         - name: ibm-helm-api-operator
           # Replace this with the built image name

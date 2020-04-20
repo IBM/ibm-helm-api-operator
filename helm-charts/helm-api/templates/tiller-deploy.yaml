@@ -66,6 +66,9 @@ spec:
         app.kubernetes.io/name: tiller
         helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
+      hostNetwork: false
+      hostPID: false
+      hostIPC: false
       containers:
       - env:
         - name: IAM_HOST
@@ -101,6 +104,15 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         name: {{ .Values.tiller.image.name }}
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: {{ .Values.runAsUser }}
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          privileged: false
+          capabilities:
+            drop:
+            - ALL
         readinessProbe:
           httpGet:
             path: "/readiness"
@@ -119,13 +131,6 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: {{ .Values.runAsUser }}
-        allowPrivilegeEscalation: false
-        capabilities:
-          drop:
-          - ALL
       serviceAccount: tiller-sa
       terminationGracePeriodSeconds: 30
       tolerations:
