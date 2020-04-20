@@ -177,11 +177,11 @@ helmapi:
         label: "Proxy external address"
         description: "helmapi proxy external address for launch links"
         type: "string"
-    CLUSTER_CA_DOMAIN: 
-      __metadata:
-        label: "Cluster CA domain"
-        description: "cluster domain name"
-        type: "string"
+    # CLUSTER_CA_DOMAIN: 
+    #   __metadata:
+    #     label: "Cluster CA domain"
+    #     description: "cluster domain name"
+    #     type: "string"
     SET_TLS:
       __metadata:
         label: "Set TLS"
@@ -521,11 +521,12 @@ tiller:
     label: "Tiller"
     description: "Tiller component"
   defaultAdminUser: 
-    __metadata:
-    label: "Tiller default admin user"
-    description:
-    type: "string"
-    required: "true"
+      __metadata:
+        label: "Tiller default admin user"
+        description: "Tiller default admin user."
+        type: "string"
+        required: true
+        immutable: false
   image:
     name:
       __metadata:

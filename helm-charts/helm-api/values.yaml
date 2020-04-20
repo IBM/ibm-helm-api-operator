@@ -8,7 +8,7 @@ auditService:
   name: icp-audit-service
 helmapi:
   env:
-    CLUSTER_CA_DOMAIN: mycluster.icp
+    #CLUSTER_CA_DOMAIN: mycluster.icp
     CLUSTER_PORT: 443
     DBHOST: mongodb
     DBPORT: "27017"
