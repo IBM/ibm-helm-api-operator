@@ -35,7 +35,6 @@ images:
       os: linux
       arch: s390x
 
-#this will need to be replaced with a quay.io version
 - image: icp-helm-rudder:3.3.0 
   references:	
   - repository : icp-helm-rudder:3.3.0-amd64
@@ -50,6 +49,24 @@ images:
       arch: ppc64le
   - repository : icp-helm-rudder:3.3.0-s390x
     pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.0-s390x
+    platform:
+      os: linux
+      arch: s390x
+
+- image: tiller:v2.16.1-cs-3.3.0
+  references:	
+  - repository : tiller:v2.16.1-cs-3.3.0-amd64
+    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.0-amd64
+    platform:
+      os: linux
+      arch: amd64
+  - repository : tiller:v2.16.1-cs-3.3.0-ppc64le
+    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.0-ppc64le
+    platform:
+      os: linux
+      arch: ppc64le
+  - repository : tiller:v2.16.1-cs-3.3.0-s390x
+    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.0-s390x
     platform:
       os: linux
       arch: s390x
