@@ -52,7 +52,6 @@ spec:
                       type: string
                 name:
                   type: string
-              x-kubernetes-preserve-unknown-fields: true
             helmapi:
               type: object
               properties:
