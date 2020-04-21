@@ -50,7 +50,7 @@ spec:
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
       containers:
-      {{ if .Values.auditService.config.enabled }}
+      {{ if .Values.auditService.config.auditEnabled }}
       - name: {{ .Values.auditService.name }}
         image: "{{ .Values.auditService.image.imageRegistry }}/{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
         imagePullPolicy: {{ .Values.auditService.image.pullPolicy }}
@@ -173,7 +173,7 @@ spec:
           mountPath: {{ .Values.helmapi.volumeMounts.helmApiCertsMountPath}}
         - name: {{ .Values.helmapi.sharedassets.name }}
           mountPath: {{ .Values.helmapi.sharedassets.path }}
-        {{ if .Values.auditService.config.enabled }}
+        {{ if .Values.auditService.config.auditEnabled }}
         - name: shared
           mountPath: "/var/log/audit"
         {{ end }}
@@ -273,7 +273,7 @@ spec:
         emptyDir: {}
       - name: {{ .Values.rudder.volumeMounts.rudderCacheName }}
         emptyDir: {}
-      {{ if .Values.auditService.config.enabled }}
+      {{ if .Values.auditService.config.auditEnabled }}
       - name: journal
         hostPath:
           path: /run/systemd/journal

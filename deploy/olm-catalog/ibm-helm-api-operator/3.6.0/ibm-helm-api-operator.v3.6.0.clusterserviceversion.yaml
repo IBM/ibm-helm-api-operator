@@ -5,7 +5,7 @@ metadata:
     alm-examples: |-
       [
         {
-          "apiVersion": "operator.ibm.com/v1alpha1",
+          "apiVersion": "operator.ibm.com/v1",
           "kind": "HelmAPI",
           "metadata": {
             "name": "helm-api"
@@ -13,15 +13,14 @@ metadata:
           "spec": {
             "auditService": {
               "config": {
-                "enabled": true
+                "auditEnabled": true
               },
               "image": {
-                "pullPolicy": "IfNotPresent",
                 "imageRegistry": "quay.io/opencloudio",
+                "pullPolicy": "IfNotPresent",
                 "repository": "icp-audit-service",
                 "tag": "3.4.0"
               },
-              "name": "icp-audit-service",
               "resources": {
                 "limits": {
                   "cpu": "200m",
@@ -35,28 +34,13 @@ metadata:
             },
             "helmapi": {
               "env": {
-                "CLUSTER_CA_DOMAIN": "mycluster.icp",
-                "CLUSTER_PORT": 443,
-                "DBHOST": "mongodb",
-                "DBPORT": "27017",
                 "HTTPS_PROXY": "",
                 "HTTP_PROXY": "",
-                "ISICP": true,
-                "LOAD_ROUTES": "API",
-                "MONGO_ISSSL": true,
-                "MONGO_SSL_CA": "/certs/mongodb-ca/tls.crt",
-                "MONGO_SSL_CERT": "/certs/mongodb-client/tls.crt",
-                "MONGO_SSL_KEY": "/certs/mongodb-client/tls.key",
-                "NO_PROXY": "mycluster.icp,mongodb,platform-identity-provider,platform-identity-management,icp-management-ingress,iam-pap,localhost,127.0.0.1",
-                "PROXY_EXTERNAL_ADDR": "proxy_external_address",
-                "PROXY_ROUTE": "helm-api",
-                "SET_TLS": "true",
-                "WLP_REDIRECT_URL": "http://localhost:3000/auth/liberty/callback"
+                "NO_PROXY": "mycluster.icp,mongodb,platform-identity-provider,platform-identity-management,icp-management-ingress,iam-pap,localhost,127.0.0.1"
               },
               "image": {
-                "name": "helmapi",
-                "pullPolicy": "IfNotPresent",
                 "imageRegistry": "quay.io/opencloudio",
+                "pullPolicy": "IfNotPresent",
                 "repository": "icp-helm-api",
                 "tag": "3.3.0"
               },
@@ -69,54 +53,16 @@ metadata:
                   "cpu": "300m",
                   "memory": "400Mi"
                 }
-              },
-              "secretKeyRef": {
-                "clientIdSecretKey": "WLP_CLIENT_ID",
-                "clientIdSecretName": "platform-oidc-credentials",
-                "clientSecretSecretKey": "WLP_CLIENT_SECRET",
-                "clientSecretSecretName": "platform-oidc-credentials",
-                "dbSecretName": "icp-mongodb-admin",
-                "dbSecretPassKey": "password",
-                "dbSecretUserKey": "user"
-              },
-              "service": {
-                "name": "helm-api",
-                "port": 3000,
-                "portName": "helmapiport"
-              },
-              "sharedassets": {
-                "name": "sharedassets",
-                "path": "/usr/src/app/assets"
-              },
-              "volumeMounts": {
-                "helmApiCertsMountPath": "/etc/certs",
-                "helmApiCertsName": "helmapi-certs",
-                "mongoCaMountPath": "/certs/mongodb-ca",
-                "mongoCaName": "mongodb-ca-cert",
-                "mongoClientCertMountPath": "/certs/mongodb-client",
-                "mongoClientCertName": "mongodb-client-cert"
               }
             },
-            "nodeSelector": {},
             "replicaCount": 1,
             "rudder": {
-              "env": {
-                "RUDDER_CLIENT_CERTS": "/etc/certs",
-                "RUDDER_TILLER_ADDRESS": "tiller-deploy:44134",
-                "USE_TLS": "true"
-              },
               "image": {
-                "name": "rudder",
-                "pullPolicy": "IfNotPresent",
                 "imageRegistry": "quay.io/opencloudio",
+                "pullPolicy": "IfNotPresent",
                 "repository": "icp-helm-rudder",
                 "tag": "3.3.0"
               },
-              "ports": {
-                "containerPort": 5000,
-                "containerPortName": "p5000",
-                "protocol": "TCP"
-              },
               "resources": {
                 "limits": {
                   "cpu": "150m",
@@ -126,25 +72,15 @@ metadata:
                   "cpu": "150m",
                   "memory": "128Mi"
                 }
-              },
-              "volumeMounts": {
-                "rudderCacheMountPath": "/opt/rudder/cache",
-                "rudderCacheName": "rudder-cache",
-                "rudderCertsMountPath": "/etc/certs",
-                "rudderCertsName": "rudder-certs"
               }
             },
-            "runAsUser": 65534,
             "tiller": {
-              "defaultAdminUser": "admin",
               "image": {
-                "name": "tiller",
-                "pullPolicy": "IfNotPresent",
                 "imageRegistry": "quay.io/opencloudio",
+                "pullPolicy": "IfNotPresent",
                 "repository": "tiller",
                 "tag": "v2.16.1-cs-3.3.0"
               },
-              "nodePort": 31514,
               "resources": {
                 "limits": {
                   "cpu": "100m",
@@ -155,16 +91,6 @@ metadata:
                   "memory": "128Mi"
                 }
               }
-            },
-            "volumes": {
-              "helmApiCertsName": "helmapi-certs",
-              "helmApiCertsSecretName": "helmapi-secret",
-              "mongoCaCertName": "mongodb-ca-cert",
-              "mongoCaCertSecretName": "mongodb-root-ca-cert",
-              "mongoClientCertName": "mongodb-client-cert",
-              "mongoClientCertSecretName": "icp-mongodb-client-cert",
-              "rudderCertsName": "rudder-certs",
-              "rudderCertsSecretName": "rudder-secret"
             }
           }
         },
@@ -198,7 +124,7 @@ metadata:
               }
             ]
           }
-        }
+        }        
       ]
     capabilities: Basic Install
     categories: Developer Tools
@@ -249,27 +175,15 @@ spec:
       - description: REST API component for helm charts and releases
         displayName: Helm API
         path: helmapi
-      - description: Database component for storing chart information
-        displayName: MongoDB
-        path: mongo
-      - description: Criteria for selecting node to run on
-        displayName: Node selector criteria
-        path: nodeSelector
       - description: How many pods to run simultaneously
         displayName: Replica count
         path: replicaCount
       - description: Bridge between Helm API and Helm server
         displayName: Rudder component
         path: rudder
-      - description: What user to run as
-        displayName: Run as User
-        path: runAsUser
       - description: Tiller component
         displayName: Tiller
         path: tiller
-      - description: Volumes for helm API and Mongo certs and secrets
-        displayName: Helm API volumes
-        path: volumes
       statusDescriptors:
       - description: Conditions contains the observed states of the Helm release
         displayName: Conditions
@@ -277,7 +191,7 @@ spec:
       - description: Deployed Release shows the manifest of the deployed Helm release
         displayName: Deployed Release
         path: deployedRelease
-      version: v1alpha1
+      version: v1
   description: Helm API provides a RESTful API service for Helm-Tiller
   displayName: IBM Helm API Operator
   icon:
@@ -345,7 +259,7 @@ spec:
   maintainers:
   - email: support@ibm.com
     name: IBM Support
-  maturity: alpha
+  maturity: stable
   provider:
     name: IBM
   replaces: ibm-helm-api-operator.v3.5.0
