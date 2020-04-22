@@ -124,7 +124,7 @@ volumes:
   helmApiCertsName: helmapi-certs
   helmApiCertsSecretName: helmapi-secret
   mongoCaCertName: mongodb-ca-cert
-  mongoCaCertSecretName: cluster-ca-cert
+  mongoCaCertSecretName:  mongodb-root-ca-cert
   mongoClientCertName: mongodb-client-cert
   mongoClientCertSecretName: icp-mongodb-client-cert
   rudderCertsName: rudder-certs
