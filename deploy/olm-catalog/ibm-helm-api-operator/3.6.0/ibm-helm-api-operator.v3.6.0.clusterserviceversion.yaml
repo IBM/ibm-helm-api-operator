@@ -238,7 +238,7 @@ spec:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: ibm-helm-api-operator
-                image: quay.io/opencloudio/ibm-helm-api-operator:3.6.0
+                image: quay.io/opencloudio/ibm-helm-api-operator:latest
                 imagePullPolicy: Always
                 name: ibm-helm-api-operator
                 resources: {}
