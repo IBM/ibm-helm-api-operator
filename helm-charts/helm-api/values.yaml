@@ -80,6 +80,7 @@ rudder:
     name: rudder
     imageRegistry: quay.io/opencloudio
     pullPolicy: IfNotPresent
+    imageRegistry: quay.io/opencloudio
     repository: icp-helm-rudder
     tag: 3.3.0
   ports:

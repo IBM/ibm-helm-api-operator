@@ -34,6 +34,23 @@ spec:
         spec:
           properties:
             auditService:
+              properties:
+                config:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                image:
+                  type: object
+                  properties:
+                    imageRegistry:
+                      type: string
+                    pullPolicy:
+                      type: string                      
+                    repository:
+                      type: string
+                    tag:
+                      type: string
               type: object
               properties:
                 config:
@@ -56,53 +73,25 @@ spec:
               type: object
               properties:
                 env:
-                  type: object
                   properties:
-                    CLUSTER_CA_DOMAIN:
-                      type: string
-                    CLUSTER_PORT:
-                      type: integer
-                    DBHOST:
-                      type: string
-                    DBPORT:
-                      type: string
                     HTTP_PROXY:
                       type: string
                     HTTPS_PROXY:
                       type: string
-                    ISICP:
-                      type: boolean
-                    LOAD_ROUTES:
-                      type: string
-                    MONGO_ISSSL:
-                      type: boolean
-                    MONGO_SSL_CA:
-                      type: string
-                    MONGO_SSL_CERT: 
-                      type: string
-                    MONGO_SSL_KEY: 
-                      type: string
                     NO_PROXY: 
                       type: string
-                    PROXY_EXTERNAL_ADDR: 
-                      type: string
-                    PROXY_ROUTE: 
-                      type: string
-                    SET_TLS: 
-                      type: string
-                    WLP_REDIRECT_URL:
-                      type: string
+                  type: object                  
                 image:
-                  type: object
                   properties:
-                    name:
+                    imageRegistry:
                       type: string
                     pullPolicy:
-                      type: string
+                      type: string                      
                     repository:
                       type: string
                     tag:
                       type: string
+                  type: object
                 resources:
                   type: object
                   properties:
@@ -120,90 +109,21 @@ spec:
                           type: string
                         memory: 
                           type: string
-                secretKeyRef:
-                  type: object
-                  properties:
-                    clientIdSecretKey:
-                      type: string
-                    clientIdSecretName:
-                      type: string
-                    clientSecretSecretKey:
-                      type: string
-                    clientSecretSecretName:
-                      type: string
-                    dbSecretName:
-                      type: string
-                    dbSecretPassKey:
-                      type: string
-                    dbSecretUserKey:
-                      type: string
-                service:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    port:
-                      type: integer #maybe string?
-                    portName:
-                      type: string
-                sharedassets:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    path:
-                      type: string
-                volumemounts:
-                  type: object
-                  properties:
-                    helmApiCertsMountPath: 
-                      type: string
-                    helmApiCertsName: 
-                      type: string
-                    mongoCaMountPath: 
-                      type: string
-                    mongoCaName: 
-                      type: string
-                    mongoClientCertMountPath: 
-                      type: string
-                    mongoClientCertName: 
-                      type: string
-            nodeSelector:
-              type: object
             replicaCount:
               type: integer
             rudder:
-              type: object
               properties:
-                env:
-                  type: object
-                  properties:
-                    RUDDER_CLIENT_CERTS:
-                      type: string
-                    RUDDER_TILLER_ADDRESS:
-                      type: string
-                    USE_TLS:
-                      type: string
                 image:
-                  type: object
                   properties:
-                    name:
+                    imageRegistry:
                       type: string
                     pullPolicy:
-                      type: string
+                      type: string                      
                     repository:
                       type: string
                     tag:
                       type: string
-                ports:
                   type: object
-                  properties:
-                    containerPort:
-                      type: integer #maybe string?
-                    containerPortName:
-                      type: string
-                    protocol:
-                      type: string
                 resources:
                   type: object
                   properties:
@@ -221,39 +141,22 @@ spec:
                           type: string
                         memory: 
                           type: string
-                volumeMounts:
-                  type: object
-                  properties:
-                    rudderCacheMountPath:
-                      type: string
-                    rudderCacheName:
-                      type: string
-                    rudderCertsMountPath:
-                      type: string
-                    rudderCertsName:
-                      type: string
-            runAsUser:
-              type: integer
+              type: object           
             tiller:
               type: object
               properties:
-                defaultAdminUser:
-                  type: string
                 image:
-                  type: object
                   properties:
-                    name:
+                    imageRegistry:
                       type: string
                     pullPolicy:
-                      type: string
+                      type: string                      
                     repository:
                       type: string
                     tag:
                       type: string
-                nodePort:
-                  type: integer #maybe string?
-                resources:
                   type: object
+                resources:
                   properties:
                     limits:
                       type: object
@@ -269,30 +172,7 @@ spec:
                           type: string
                         memory: 
                           type: string
-            volumes:
-              type: object
-              properties:
-                helmApiCertsName: 
-                  type: string
-                helmApiCertsSecretName: 
-                  type: string
-                mongoCaCertName: 
-                  type: string
-                mongoCaCertSecretName: 
-                  type: string
-                mongoClientCertName:
-                  type: string
-                mongoClientCertSecretName: 
-                  type: string
-                rudderCertsName: 
-                  type: string
-                rudderCertsSecretName: 
-                  type: string                           
-          required:
-          - helmapi
-          - rudder
-          - runAsUser
-          - tiller
+                  type: object
           type: object
         status:
           properties:
@@ -328,8 +208,8 @@ spec:
       - metadata
       - spec
       type: object
-  version: v1alpha1
+  version: v1
   versions:
-  - name: v1alpha1
+  - name: v1
     served: true
     storage: true

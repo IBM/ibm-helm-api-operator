@@ -36,7 +36,7 @@ metadata:
               "env": {
                 "HTTPS_PROXY": "",
                 "HTTP_PROXY": "",
-                "NO_PROXY": "mycluster.icp,mongodb,platform-identity-provider,platform-identity-management,icp-management-ingress,iam-pap,localhost,127.0.0.1",
+                "NO_PROXY": "mycluster.icp,mongodb,platform-identity-provider,platform-identity-management,icp-management-ingress,iam-pap,localhost,127.0.0.1"
               },
               "image": {
                 "imageRegistry": "quay.io/opencloudio",
@@ -50,8 +50,8 @@ metadata:
                   "memory": "400Mi"
                 },
                 "requests": {
-                  "cpu": "200m",
-                  "memory": "300Mi"
+                  "cpu": "300m",
+                  "memory": "400Mi"
                 }
               }
             },
@@ -69,7 +69,7 @@ metadata:
                   "memory": "128Mi"
                 },
                 "requests": {
-                  "cpu": "100m",
+                  "cpu": "150m",
                   "memory": "128Mi"
                 }
               }
