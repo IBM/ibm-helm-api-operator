@@ -65,6 +65,14 @@ helmapi:
         description: "Docker image name"
         type: "string"
         required: true
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the helm api image"
+        type: "string"
+        immutable: false
+        required: true
     repository:
       __metadata:
         label: "Repository"
@@ -315,6 +323,14 @@ rudder:
         description: "Docker image name"
         type: "string"
         required: true
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the rudder image"
+        type: "string"
+        immutable: false
+        required: true
     repository:
       __metadata:
         label: "Repository"
@@ -484,6 +500,14 @@ auditService:
       type: "string"
       required: true
   image:
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the audit service image"
+        type: "string"
+        immutable: false
+        required: true
     repository:
       __metadata:
         label: "Repository"
@@ -509,6 +533,39 @@ auditService:
           value: "Never"
         - label: "IfNotPresent"
           value: "IfNotPresent"
+  resources:
+    limits:
+      cpu:
+        __metadata:
+          label: "CPU limit"
+          description: "CPU limit for rudder"
+          type: "string"
+          immutable: false
+          required: false
+      memory:
+        __metadata:
+          label: "Memory limit"
+          description: "Memory limit for rudder"
+          type: "string" 
+          immutable: false
+          required: false
+    requests:
+      cpu:
+        __metadata:
+          label: "Requested CPU"
+          description: "Requested CPU amount for rudder"
+          type: "string" 
+          immutable: false
+          required: false
+          hidden: true
+      memory: 
+        __metadata:
+          label: "Requested memory"
+          description: "Requested memory for rudder"
+          type: "string"
+          immutable: false
+          required: false
+          hidden: true
 
   config:
     enabled:
@@ -533,6 +590,14 @@ tiller:
         label: "Service name"
         description: "Tiller component name"
         type: "string"
+        required: true
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the tiller image"
+        type: "string"
+        immutable: false
         required: true
     pullPolicy:
       __metadata:
