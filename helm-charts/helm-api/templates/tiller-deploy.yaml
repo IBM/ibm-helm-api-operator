@@ -102,7 +102,7 @@ spec:
           value: "{{ .Values.tiller.defaultAdminUser }}"
         - name: CLUSTER_PORT
           value: "443"
-        image: "{{ .Values.tiller.image.repository }}:{{ .Values.tiller.image.tag }}"
+        image: "{{ .Values.tiller.image.imageRegistry }}/{{ .Values.tiller.image.repository }}:{{ .Values.tiller.image.tag }}"
         imagePullPolicy: {{ .Values.tiller.image.pullPolicy }}
         livenessProbe:
           httpGet:

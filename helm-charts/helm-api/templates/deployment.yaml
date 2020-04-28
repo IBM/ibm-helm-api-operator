@@ -63,7 +63,7 @@ spec:
       containers:
       {{ if .Values.auditService.config.enabled }}
       - name: {{ .Values.auditService.name }}
-        image: "{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
+        image: "{{ .Values.auditService.image.imageRegistry }}/{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
         imagePullPolicy: {{ .Values.auditService.image.pullPolicy }}
         securityContext:
           seLinuxOptions:
@@ -93,7 +93,7 @@ spec:
       {{ end }}
       
       - name: {{ .Values.rudder.image.name }}
-        image: "{{ .Values.rudder.image.repository }}:{{ .Values.rudder.image.tag }}"
+        image: "{{ .Values.rudder.image.imageRegistry }}/{{ .Values.rudder.image.repository }}:{{ .Values.rudder.image.tag }}"
         imagePullPolicy: "{{ .Values.rudder.image.pullPolicy }}"
         ports:
         - containerPort: {{ .Values.rudder.ports.containerPort }}
@@ -143,7 +143,7 @@ spec:
 {{ toYaml .Values.rudder.resources | indent 10 }}
 
       - name: {{ .Values.helmapi.image.name }}
-        image: "{{ .Values.helmapi.image.repository }}:{{ .Values.helmapi.image.tag }}"
+        image: "{{ .Values.helmapi.image.imageRegistry }}/{{ .Values.helmapi.image.repository }}:{{ .Values.helmapi.image.tag }}"
         imagePullPolicy: {{ .Values.helmapi.image.pullPolicy }}
         securityContext:
           runAsNonRoot: true
