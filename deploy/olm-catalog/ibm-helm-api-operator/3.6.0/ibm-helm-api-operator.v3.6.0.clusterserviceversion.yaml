@@ -124,7 +124,7 @@ metadata:
               }
             ]
           }
-        }        
+        }     
       ]
     capabilities: Basic Install
     categories: Developer Tools

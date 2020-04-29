@@ -16,7 +16,7 @@ auditService:
       memory: 250Mi
 helmapi:
   env:
-    CLUSTER_CA_DOMAIN: mycluster.icp
+    #CLUSTER_CA_DOMAIN: mycluster.icp
     CLUSTER_PORT: 443
     DBHOST: mongodb
     DBPORT: "27017"
@@ -68,7 +68,6 @@ helmapi:
     mongoCaName: mongodb-ca-cert
     mongoClientCertMountPath: /certs/mongodb-client
     mongoClientCertName: mongodb-client-cert
-nodeSelector: {}
 replicaCount: 1
 rudder:
   env:
@@ -77,6 +76,7 @@ rudder:
     USE_TLS: "true"
   image:
     name: rudder
+    imageRegistry: quay.io/opencloudio
     pullPolicy: IfNotPresent
     imageRegistry: quay.io/opencloudio
     repository: icp-helm-rudder
@@ -124,7 +124,7 @@ volumes:
   helmApiCertsName: helmapi-certs
   helmApiCertsSecretName: helmapi-secret
   mongoCaCertName: mongodb-ca-cert
-  mongoCaCertSecretName:  mongodb-root-ca-cert
+  mongoCaCertSecretName: mongodb-root-ca-cert
   mongoClientCertName: mongodb-client-cert
   mongoClientCertSecretName: icp-mongodb-client-cert
   rudderCertsName: rudder-certs

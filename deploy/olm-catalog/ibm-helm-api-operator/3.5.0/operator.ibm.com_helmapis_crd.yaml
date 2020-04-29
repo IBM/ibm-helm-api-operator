@@ -34,9 +34,6 @@ spec:
             helmapi:
               type: object
               x-kubernetes-preserve-unknown-fields: true
-            nodeSelector:
-              type: object
-              x-kubernetes-preserve-unknown-fields: true
             replicaCount:
               type: integer
             rudder:

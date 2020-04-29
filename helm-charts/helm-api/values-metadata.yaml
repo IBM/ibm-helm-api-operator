@@ -12,38 +12,26 @@ replicaCount:
     type: "number"
     immutable: true
     required: true
-nodeSelector:
-  __metadata:
-    label: "Node selector criteria"
-    description: "Criteria for selecting node to run on"
-    hidden: true
-  master:
-    __metadata:
-      label: "Master node selector"
-      description: "Determines whether the component is scheduled on the master node"
-      type: string
-      immutable: true
-      hidden: true
 tolerations:
   __metadata:
     label: "Tolerations"
     description: "Pod tolerations for assigning to nodes with matching taints"
     required: true
     
-arch:
-  __metadata:
-    label: "Node architecture"
-    description: "Node architecture to deploy to. The helm chart will try to detect the architecture based on the master node."
-    type: "string"
-    immutable: false
-    required: false
-    options:
-      - label: "amd64"
-        value: "amd64"
-      - label: "ppc64le"
-        value: "ppc64le"
-      - label: "s390x"
-        value: "s390x"
+# arch:
+#   __metadata:
+#     label: "Node architecture"
+#     description: "Node architecture to deploy to. The helm chart will try to detect the architecture based on the master node."
+#     type: "string"
+#     immutable: false
+#     required: false
+#     options:
+#       - label: "amd64"
+#         value: "amd64"
+#       - label: "ppc64le"
+#         value: "ppc64le"
+#       - label: "s390x"
+#         value: "s390x"
 
 runAsUser:
   __metadata:
@@ -64,6 +52,14 @@ helmapi:
         label: "Image name"
         description: "Docker image name"
         type: "string"
+        required: true
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the helm api image"
+        type: "string"
+        immutable: false
         required: true
     repository:
       __metadata:
@@ -177,11 +173,11 @@ helmapi:
         label: "Proxy external address"
         description: "helmapi proxy external address for launch links"
         type: "string"
-    CLUSTER_CA_DOMAIN: 
-      __metadata:
-        label: "Cluster CA domain"
-        description: "cluster domain name"
-        type: "string"
+    # CLUSTER_CA_DOMAIN: 
+    #   __metadata:
+    #     label: "Cluster CA domain"
+    #     description: "cluster domain name"
+    #     type: "string"
     SET_TLS:
       __metadata:
         label: "Set TLS"
@@ -314,6 +310,14 @@ rudder:
         label: "Image name"
         description: "Docker image name"
         type: "string"
+        required: true
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the rudder image"
+        type: "string"
+        immutable: false
         required: true
     repository:
       __metadata:
@@ -484,6 +488,14 @@ auditService:
       type: "string"
       required: true
   image:
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the audit service image"
+        type: "string"
+        immutable: false
+        required: true
     repository:
       __metadata:
         label: "Repository"
@@ -509,6 +521,39 @@ auditService:
           value: "Never"
         - label: "IfNotPresent"
           value: "IfNotPresent"
+  resources:
+    limits:
+      cpu:
+        __metadata:
+          label: "CPU limit"
+          description: "CPU limit for rudder"
+          type: "string"
+          immutable: false
+          required: false
+      memory:
+        __metadata:
+          label: "Memory limit"
+          description: "Memory limit for rudder"
+          type: "string" 
+          immutable: false
+          required: false
+    requests:
+      cpu:
+        __metadata:
+          label: "Requested CPU"
+          description: "Requested CPU amount for rudder"
+          type: "string" 
+          immutable: false
+          required: false
+          hidden: true
+      memory: 
+        __metadata:
+          label: "Requested memory"
+          description: "Requested memory for rudder"
+          type: "string"
+          immutable: false
+          required: false
+          hidden: true
 
   config:
     enabled:
@@ -516,3 +561,92 @@ auditService:
         label: "Enable audit config"
         description: "Is audit config enabled?"
         type: "boolean"
+tiller:
+  __metadata:
+    label: "Tiller"
+    description: "Tiller component"
+  defaultAdminUser: 
+      __metadata:
+        label: "Tiller default admin user"
+        description: "Tiller default admin user."
+        type: "string"
+        required: true
+        immutable: false
+  image:
+    name:
+      __metadata:
+        label: "Service name"
+        description: "Tiller component name"
+        type: "string"
+        required: true
+    imageRegistry:
+      __metadata:
+        name: "imageRegistry"
+        label: "Image Registry"
+        description: "helmapi.image.imageRegistry: Registry for the tiller image"
+        type: "string"
+        immutable: false
+        required: true
+    pullPolicy:
+      __metadata:
+        label: "Image pull policy"
+        description: "Docker image pull policy"
+        type: "string"
+        required: true      
+        options:
+        - label: "Always"
+          value: "Always"
+        - label: "Never"
+          value: "Never"
+        - label: "IfNotPresent"
+          value: "IfNotPresent"
+    repository:
+      __metadata:
+        label: "Repository"
+        description: "Docker image location"
+        type: "string"
+        required: true
+    tag:
+      __metadata:
+        label: "Tag"
+        description: "Docker image tag"
+        type: "string"
+        required: false
+  nodePort:
+      __metadata:
+        label: "Tiller service port"
+        description: "tiller service port number"
+        type: "number"
+  resources:
+    limits:
+      cpu:
+        __metadata:
+          label: "CPU limit"
+          description: "CPU limit for rudder"
+          type: "string"
+          immutable: false
+          required: false
+      memory:
+        __metadata:
+          label: "Memory limit"
+          description: "Memory limit for rudder"
+          type: "string" 
+          immutable: false
+          required: false
+    requests:
+      cpu:
+        __metadata:
+          label: "Requested CPU"
+          description: "Requested CPU amount for rudder"
+          type: "string" 
+          immutable: false
+          required: false
+          hidden: true
+      memory: 
+        __metadata:
+          label: "Requested memory"
+          description: "Requested memory for rudder"
+          type: "string"
+          immutable: false
+          required: false
+          hidden: true

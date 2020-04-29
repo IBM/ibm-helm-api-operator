@@ -3,11 +3,23 @@ apiVersion: v1
 kind: ServiceAccount
 metadata: 
   name: helm-api-sa
+  labels:
+    name: helm-api-sa
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    app.kubernetes.io/name: helm-api-sa
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: helm-api-privileged-role
+  labels:
+    name: helm-api-privileged-role
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    app.kubernetes.io/name: helm-api-privileged-role
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 rules:
 - apiGroups:
   - ""
@@ -68,6 +80,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: helm-api-privileged
+  labels:
+    name: helm-api-privileged
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    app.kubernetes.io/name: helm-api-privileged
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 subjects:
 - kind: ServiceAccount
   name: helm-api-sa
