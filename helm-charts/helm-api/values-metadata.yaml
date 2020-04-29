@@ -12,18 +12,6 @@ replicaCount:
     type: "number"
     immutable: true
     required: true
-nodeSelector:
-  __metadata:
-    label: "Node selector criteria"
-    description: "Criteria for selecting node to run on"
-    hidden: true
-  master:
-    __metadata:
-      label: "Master node selector"
-      description: "Determines whether the component is scheduled on the master node"
-      type: string
-      immutable: true
-      hidden: true
 tolerations:
   __metadata:
     label: "Tolerations"

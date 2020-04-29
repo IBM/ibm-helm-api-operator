@@ -68,8 +68,6 @@ helmapi:
     mongoCaName: mongodb-ca-cert
     mongoClientCertMountPath: /certs/mongodb-client
     mongoClientCertName: mongodb-client-cert
-nodeSelector: 
-  master: ""
 replicaCount: 1
 rudder:
   env:
