@@ -36,44 +36,41 @@ spec:
             auditService:
               properties:
                 config:
-                  type: object
                   properties:
                     enabled:
                       type: boolean
-                image:
                   type: object
+                image:
                   properties:
                     imageRegistry:
                       type: string
                     pullPolicy:
-                      type: string
-                    pullPolicy:
-                      type: string                      
+                      type: string                   
                     repository:
                       type: string
                     tag:
                       type: string
-                resources:
                   type: object
+                resources:
                   properties:
                     limits:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
                     requests:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
+                  type: object
                 name:
                   type: string
             helmapi:
-              type: object
               properties:
                 env:
                   properties:
@@ -83,6 +80,7 @@ spec:
                       type: string
                     NO_PROXY: 
                       type: string
+                  type: object
                 image:
                   properties:
                     imageRegistry:
@@ -95,22 +93,23 @@ spec:
                       type: string
                   type: object
                 resources:
-                  type: object
                   properties:
                     limits:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
                     requests:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
+                  type: object
+              type: object
             replicaCount:
               type: integer
             rudder:
@@ -125,25 +124,25 @@ spec:
                       type: string
                     tag:
                       type: string
-                resources:
                   type: object
+                resources:
                   properties:
                     limits:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
                     requests:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
+                  type: object
             tiller:
-              type: object
               properties:
                 image:
                   properties:
@@ -159,19 +158,21 @@ spec:
                 resources:
                   properties:
                     limits:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
                     requests:
-                      type: object
                       properties:
                         cpu:
                           type: string
                         memory: 
                           type: string
+                      type: object
+                  type: object
+              type: object
           type: object
         status:
           properties:
