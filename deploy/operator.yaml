@@ -55,6 +55,13 @@ spec:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
               value: "ibm-helm-api-operator"
+          resources:
+            limits:
+              cpu: 150m
+              memory: 150Mi
+            requests:
+              cpu: 150m
+              memory: 150Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -63,11 +70,4 @@ spec:
             privileged: false
             readOnlyRootFilesystem: true
             runAsNonRoot: true
-            runAsUser: 1001
-          resources:
-            limits:
-              cpu: 300m
-              memory: 400Mi
-            requests:
-              cpu: 200m
-              memory: 300Mi
+            runAsUser: 1000550000
