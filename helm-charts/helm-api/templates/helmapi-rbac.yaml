@@ -2,23 +2,23 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata: 
-  name: helm-api-sa
+  name: ibm-helm-api-operand
   labels:
-    name: helm-api-sa
+    name: ibm-helm-api-operand
     app.kubernetes.io/instance: "{{ .Release.Name }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
-    app.kubernetes.io/name: helm-api-sa
+    app.kubernetes.io/name: "helm-api"
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: helm-api-privileged-role
+  name: ibm-helm-api-operand
   labels:
-    name: helm-api-privileged-role
+    name: ibm-helm-api-operand
     app.kubernetes.io/instance: "{{ .Release.Name }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
-    app.kubernetes.io/name: helm-api-privileged-role
+    app.kubernetes.io/name: "helm-api"
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 rules:
 - apiGroups:
@@ -71,7 +71,6 @@ rules:
   resources:
   - securitycontextconstraints 
   resourceNames:
-  - hostaccess
   - privileged
   verbs:
   - use
@@ -79,18 +78,18 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: helm-api-privileged
+  name: ibm-helm-api-operand
   labels:
-    name: helm-api-privileged
+    name: ibm-helm-api-operand
     app.kubernetes.io/instance: "{{ .Release.Name }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
-    app.kubernetes.io/name: helm-api-privileged
+    app.kubernetes.io/name: "helm-api"
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 subjects:
 - kind: ServiceAccount
-  name: helm-api-sa
+  name: ibm-helm-api-operand
   namespace: {{ .Release.Namespace }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: helm-api-privileged-role
+  name: ibm-helm-api-operand
