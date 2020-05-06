@@ -56,14 +56,12 @@ spec:
         {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
         runAsUser: {{ .Values.runAsUser }}
         {{- end }} 
-      nodeSelector:
-{{ toYaml .Values.nodeSelector | indent 8 }}
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
       containers:
       {{ if .Values.auditService.config.enabled }}
       - name: {{ .Values.auditService.name }}
-        image: "{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
+        image: "{{ .Values.auditService.image.imageRegistry }}/{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
         imagePullPolicy: {{ .Values.auditService.image.pullPolicy }}
         securityContext:
           seLinuxOptions:
@@ -85,15 +83,15 @@ spec:
           mountPath: "/var/log/audit"
         resources:
           limits:
-            cpu: 100m
-            memory: 128Mi
+            cpu: {{ .Values.auditService.resources.limits.cpu }}
+            memory: {{ .Values.auditService.resources.limits.memory }}
           requests:
-            cpu: 50m
-            memory: 128Mi
+            cpu: {{ .Values.auditService.resources.requests.cpu }}
+            memory: {{ .Values.auditService.resources.requests.memory }}
       {{ end }}
       
       - name: {{ .Values.rudder.image.name }}
-        image: "{{ .Values.rudder.image.repository }}:{{ .Values.rudder.image.tag }}"
+        image: "{{ .Values.rudder.image.imageRegistry }}/{{ .Values.rudder.image.repository }}:{{ .Values.rudder.image.tag }}"
         imagePullPolicy: "{{ .Values.rudder.image.pullPolicy }}"
         ports:
         - containerPort: {{ .Values.rudder.ports.containerPort }}
@@ -143,7 +141,7 @@ spec:
 {{ toYaml .Values.rudder.resources | indent 10 }}
 
       - name: {{ .Values.helmapi.image.name }}
-        image: "{{ .Values.helmapi.image.repository }}:{{ .Values.helmapi.image.tag }}"
+        image: "{{ .Values.helmapi.image.imageRegistry }}/{{ .Values.helmapi.image.repository }}:{{ .Values.helmapi.image.tag }}"
         imagePullPolicy: {{ .Values.helmapi.image.pullPolicy }}
         securityContext:
           runAsNonRoot: true

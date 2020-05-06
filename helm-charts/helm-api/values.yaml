@@ -3,9 +3,17 @@ auditService:
     enabled: true
   image:
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/icp-audit-service
+    imageRegistry: quay.io/opencloudio
+    repository: icp-audit-service
     tag: 3.4.0
   name: icp-audit-service
+  resources:
+    limits:
+      cpu: 200m
+      memory: 250Mi
+    requests:
+      cpu: 200m
+      memory: 250Mi
 helmapi:
   env:
     #CLUSTER_CA_DOMAIN: mycluster.icp
@@ -28,15 +36,16 @@ helmapi:
   image:
     name: helmapi
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/icp-helm-api
+    imageRegistry: quay.io/opencloudio
+    repository: icp-helm-api
     tag: 3.3.0
   resources:
     limits:
       cpu: 300m
       memory: 400Mi
     requests:
-      cpu: 200m
-      memory: 300Mi
+      cpu: 300m
+      memory: 400Mi
   secretKeyRef:
     clientIdSecretKey: WLP_CLIENT_ID
     clientIdSecretName: platform-oidc-credentials
@@ -59,8 +68,6 @@ helmapi:
     mongoCaName: mongodb-ca-cert
     mongoClientCertMountPath: /certs/mongodb-client
     mongoClientCertName: mongodb-client-cert
-nodeSelector: 
-  master: ""
 replicaCount: 1
 rudder:
   env:
@@ -69,8 +76,10 @@ rudder:
     USE_TLS: "true"
   image:
     name: rudder
+    imageRegistry: quay.io/opencloudio
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/icp-helm-rudder
+    imageRegistry: quay.io/opencloudio
+    repository: icp-helm-rudder
     tag: 3.3.0
   ports:
     containerPort: 5000
@@ -81,7 +90,7 @@ rudder:
       cpu: 150m
       memory: 128Mi
     requests:
-      cpu: 100m
+      cpu: 150m
       memory: 128Mi
   volumeMounts:
     rudderCacheMountPath: /opt/rudder/cache
@@ -94,7 +103,8 @@ tiller:
   image:
     name: tiller
     pullPolicy: IfNotPresent
-    repository:  quay.io/opencloudio/tiller
+    imageRegistry: quay.io/opencloudio
+    repository:  tiller
     tag: v2.16.1-cs-3.3.0
   nodePort: 31514
   resources:
@@ -114,7 +124,7 @@ volumes:
   helmApiCertsName: helmapi-certs
   helmApiCertsSecretName: helmapi-secret
   mongoCaCertName: mongodb-ca-cert
-  mongoCaCertSecretName: cluster-ca-cert
+  mongoCaCertSecretName: mongodb-root-ca-cert
   mongoClientCertName: mongodb-client-cert
   mongoClientCertSecretName: icp-mongodb-client-cert
   rudderCertsName: rudder-certs

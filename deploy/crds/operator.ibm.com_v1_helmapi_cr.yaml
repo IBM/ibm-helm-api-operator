@@ -1,0 +1,69 @@
+apiVersion: operator.ibm.com/v1
+kind: HelmAPI
+metadata:
+  name: helm-api
+  labels:
+      name: ibm-helm-api-operator
+      app.kubernetes.io/instance: helmapis.operator.ibm.com
+      app.kubernetes.io/managed-by: helmapis.operator.ibm.com
+      app.kubernetes.io/name: helmapis.operator.ibm.com
+spec:
+  auditService:
+    config:
+      enabled: true
+    image:
+      imageRegistry: quay.io/opencloudio
+      pullPolicy: IfNotPresent
+      repository: icp-audit-service
+      tag: 3.4.0
+    resources:
+      limits:
+        cpu: 200m
+        memory: 250Mi
+      requests:
+        cpu: 200m
+        memory: 250Mi
+  helmapi:
+    env:
+      HTTP_PROXY: ""
+      HTTPS_PROXY: ""
+      NO_PROXY: mycluster.icp,mongodb,platform-identity-provider,platform-identity-management,icp-management-ingress,iam-pap,localhost,127.0.0.1
+    image:
+      imageRegistry: quay.io/opencloudio
+      pullPolicy: IfNotPresent
+      repository: icp-helm-api
+      tag: 3.3.0
+    resources:
+      limits:
+        cpu: 300m
+        memory: 400Mi
+      requests:
+        cpu: 300m
+        memory: 400Mi
+  replicaCount: 1
+  rudder:
+    image:
+      imageRegistry: quay.io/opencloudio
+      pullPolicy: IfNotPresent
+      repository: icp-helm-rudder
+      tag: 3.3.0
+    resources:
+      limits:
+        cpu: 150m
+        memory: 128Mi
+      requests:
+        cpu: 150m
+        memory: 128Mi
+  tiller:
+    image:
+      imageRegistry: quay.io/opencloudio
+      pullPolicy: IfNotPresent
+      repository: tiller
+      tag: v2.16.1-cs-3.3.0
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi

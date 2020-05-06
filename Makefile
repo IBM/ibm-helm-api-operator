@@ -31,7 +31,7 @@ NAMESPACE=ibm-common-services
 # Use your own docker registry and image name for dev/test by overridding the IMG and REGISTRY environment variable.
 IMG ?= ibm-helm-api-operator
 REGISTRY ?= quay.io/opencloudio
-CSV_VERSION ?= 3.5.0 #TODO change this to 3.6.0 before merging
+CSV_VERSION ?= 3.6.0
 
 QUAY_USERNAME ?=
 QUAY_PASSWORD ?=
@@ -169,8 +169,8 @@ endif
 dev-image: clean build-amd64 push-amd64-dev ## Release development amd64 operator image 
 
 push-amd64-dev:
-	@docker tag $(REGISTRY)/$(IMG)-amd64:$(VERSION) $(REGISTRY)/$(IMG):dev
-	@docker push $(REGISTRY)/$(IMG):dev
+	@docker tag $(REGISTRY)/$(IMG)-amd64:$(VERSION) $(REGISTRY)/$(IMG):latest
+	@docker push $(REGISTRY)/$(IMG):latest
 
 ############################################################
 # application section
@@ -195,6 +195,9 @@ uninstall: ## Uninstall all that all performed in the $ make install
 	@echo ....... Uninstalling .......
 	@echo ....... Deleting CR .......
 	- for cr in $(shell ls deploy/crds/*_cr.yaml); do kubectl delete -f $${cr} -n ${NAMESPACE}; done
+	@echo ....... Deleting Secrets .......
+	- kubectl -n ${NAMESPACE} delete secret tiller-secret
+	- kubectl -n ${NAMESPACE} delete secret rudder-secret
 	@echo ....... Deleting Operator .......
 	- kubectl delete -f deploy/olm-catalog/${BASE_DIR}/${CSV_VERSION}/${BASE_DIR}.v${CSV_VERSION}.clusterserviceversion.yaml -n ${NAMESPACE}
 	@echo ....... Deleting CRDs.......
