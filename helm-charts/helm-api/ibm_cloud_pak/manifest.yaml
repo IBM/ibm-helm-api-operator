@@ -1,0 +1,111 @@
+# Licensed Materials - Property of IBM
+# (C) Copyright IBM Corporation 2016, 2019. All Rights Reserved.
+# US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+charts:	
+  - archive: file:helm-api-3.5.0.tgz
+    repository-keys:
+    - helmapi.image.repository
+    - rudder.image.repository
+    - auditService.image.repository
+images:	
+- image: icp-helm-api:3.3.0
+  references:	
+  - repository : icp-helm-api-amd64:3.3.0
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-amd64/icp-helm-api:3.3.0
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: amd64
+  - repository : icp-helm-api-ppc64le:3.3.0
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-ppc64le/icp-helm-api:3.3.0
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: ppc64le
+  - repository : icp-helm-api-s390x:3.3.0
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-s390x/icp-helm-api:3.3.0
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: s390x
+
+
+- image: icp-audit-service:3.3.1
+  references:	
+  - repository : icp-audit-service-amd64:3.3.1
+    pull-repository: hyc-cloud-private-edge-docker-local.artifactory.swg-devops.com/ibmcom-amd64/icp-audit-service:3.3.1
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: amd64
+  - repository : icp-audit-service-ppc64le:3.3.1
+    pull-repository: hyc-cloud-private-edge-docker-local.artifactory.swg-devops.com/ibmcom-ppc64le/icp-audit-service:3.3.1
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: ppc64le
+  - repository : icp-audit-service-s390x:3.3.1
+    pull-repository: hyc-cloud-private-edge-docker-local.artifactory.swg-devops.com/ibmcom-s390x/icp-audit-service:3.3.1
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: s390x
+
+
+- image: icp-helm-rudder:3.2.2
+  references:	
+  - repository : icp-helm-rudder-amd64:3.2.2
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-amd64/icp-helm-rudder:3.2.2
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: amd64
+  - repository : icp-helm-rudder-ppc64le:3.2.2
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-ppc64le/icp-helm-rudder:3.2.2
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: ppc64le
+  - repository : icp-helm-rudder-s390x:3.2.2
+    pull-repository: hyc-cloud-private-stable-docker-local.artifactory.swg-devops.com/ibmcom-s390x/icp-helm-rudder:3.2.2
+    pull-authorization:
+      username:
+        env: ARTIFACTORY_USERNAME
+      password:
+        env: ARTIFACTORY_APIKEY
+    platform:
+      os: linux
+      architecture: s390x
