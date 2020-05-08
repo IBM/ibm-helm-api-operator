@@ -16,7 +16,23 @@ images:
     platform:
       os: linux
       arch: s390x
-
+- image: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+  references:
+  - repository: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+    platform:
+      os: linux
+      arch: amd64
+  - repository: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+    platform:
+      os: linux
+      arch: ppc64le
+  - repository: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+    platform:
+      os: linux
+      arch: s390x
 - image: icp-audit-service:3.4.1
   references:
   - repository: icp-audit-service:3.4.1
