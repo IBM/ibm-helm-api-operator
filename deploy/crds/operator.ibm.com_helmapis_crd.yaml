@@ -16,7 +16,8 @@ spec:
     singular: helmapi
   scope: Namespaced
   subresources:
-    status: {}
+    status: 
+      storedVersions: v1
   validation:
     openAPIV3Schema:
       description: HelmAPI is the Schema for the helmapis API
