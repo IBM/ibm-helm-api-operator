@@ -73,6 +73,13 @@ helmapi:
         description: "Docker image tag"
         type: "string"
         required: false
+    sha:
+      __metadata:
+        label: "Helm API image digest"
+        description: "Helm API image digest."
+        type: "string"
+        required: false
+        immutable: false
     pullPolicy:
       __metadata:
         label: "Image pull policy"
@@ -325,6 +332,13 @@ rudder:
         description: "Docker image location"
         type: "string"
         required: true
+    sha:
+      __metadata:
+        label: "Rudder image digest"
+        description: "Rudder image digest."
+        type: "string"
+        required: false
+        immutable: false
     tag:
       __metadata:
         label: "Tag"
@@ -502,6 +516,13 @@ auditService:
         description: "Docker image location"
         type: "string"
         required: true
+    sha:
+      __metadata:
+        label: "Audit Service image digest"
+        description: "Audit Service image digest."
+        type: "string"
+        required: false
+        immutable: false
     tag:
       __metadata:
         label: "Tag"
@@ -606,6 +627,13 @@ tiller:
         description: "Docker image location"
         type: "string"
         required: true
+    sha:
+      __metadata:
+        label: "Tiller image digest"
+        description: "Tiller image digest."
+        type: "string"
+        required: false
+        immutable: false
     tag:
       __metadata:
         label: "Tag"
