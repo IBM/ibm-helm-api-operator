@@ -281,7 +281,6 @@ spec:
                   privileged: false
                   readOnlyRootFilesystem: true
                   runAsNonRoot: true
-                  runAsUser: 1000550000
               serviceAccountName: ibm-helm-api-operator
     strategy: deployment
   installModes:
