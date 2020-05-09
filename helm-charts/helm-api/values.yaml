@@ -3,11 +3,7 @@ auditService:
     enabled: true
   image:
     pullPolicy: IfNotPresent
-    imageRegistry: quay.io/opencloudio
-    repository: icp-audit-service
-    tag: 3.4.0
-    sha: "sha256:334fae7bd3ae4c04611f4e82207a2f7836dbc589f7fc2b3cd172bd93572bfe16"
-  name: icp-audit-service
+    repository: quay.io/opencloudio/icp-audit-service@sha256:24a220374c39652f8b031637d852995bfaec5be2601f9e4c41eb1925531f466d
   resources:
     limits:
       cpu: 200m
@@ -35,12 +31,8 @@ helmapi:
     SET_TLS: "true"
     WLP_REDIRECT_URL: http://localhost:3000/auth/liberty/callback
   image:
-    name: helmapi
     pullPolicy: IfNotPresent
-    imageRegistry: quay.io/opencloudio
-    repository: icp-helm-api
-    tag: 3.3.0
-    sha: "sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4"
+    repository: quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
   resources:
     limits:
       cpu: 300m
@@ -77,13 +69,8 @@ rudder:
     RUDDER_TILLER_ADDRESS: tiller-deploy:44134
     USE_TLS: "true"
   image:
-    name: rudder
-    imageRegistry: quay.io/opencloudio
     pullPolicy: IfNotPresent
-    imageRegistry: quay.io/opencloudio
-    repository: icp-helm-rudder
-    tag: 3.3.0
-    sha: "sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7"
+    repository: quay.io/opencloudio/icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
   ports:
     containerPort: 5000
     containerPortName: p5000
@@ -104,12 +91,8 @@ runAsUser: 65534
 tiller:
   defaultAdminUser: admin
   image:
-    name: tiller
     pullPolicy: IfNotPresent
-    imageRegistry: quay.io/opencloudio
-    repository:  tiller
-    tag: v2.16.1-cs-3.3.0
-    sha: "sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f"
+    repository: quay.io/opencloudio/tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
   nodePort: 31514
   resources:
     limits:

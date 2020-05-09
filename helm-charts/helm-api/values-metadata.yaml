@@ -47,32 +47,12 @@ helmapi:
     description: "REST api component for helm charts and releases"
     hidden: true
   image:
-    name:
-      __metadata:
-        label: "Image name"
-        description: "Docker image name"
-        type: "string"
-        required: true
-    imageRegistry:
-      __metadata:
-        name: "imageRegistry"
-        label: "Image Registry"
-        description: "helmapi.image.imageRegistry: Registry for the helm api image"
-        type: "string"
-        immutable: false
-        required: true
     repository:
       __metadata:
         label: "Repository"
         description: "Docker image location"
         type: "string"
         required: true
-    tag:
-      __metadata:
-        label: "Tag"
-        description: "Docker image tag"
-        type: "string"
-        required: false
     pullPolicy:
       __metadata:
         label: "Image pull policy"
@@ -305,32 +285,12 @@ rudder:
     label: "Rudder component"
     description: "Bridge between helm API and Helm server"
   image:
-    name:
-      __metadata:
-        label: "Image name"
-        description: "Docker image name"
-        type: "string"
-        required: true
-    imageRegistry:
-      __metadata:
-        name: "imageRegistry"
-        label: "Image Registry"
-        description: "helmapi.image.imageRegistry: Registry for the rudder image"
-        type: "string"
-        immutable: false
-        required: true
     repository:
       __metadata:
         label: "Repository"
         description: "Docker image location"
         type: "string"
         required: true
-    tag:
-      __metadata:
-        label: "Tag"
-        description: "Docker image tag"
-        type: "string"
-        required: false
     pullPolicy:
       __metadata:
         label: "Image pull policy"
@@ -481,33 +441,13 @@ auditService:
   __metadata:
     label: "Audit service"
     description: "Helm repo audit logging component"
-  name:
-    __metadata:
-      label: "Service name"
-      description: "Audit service component name"
-      type: "string"
-      required: true
   image:
-    imageRegistry:
-      __metadata:
-        name: "imageRegistry"
-        label: "Image Registry"
-        description: "helmapi.image.imageRegistry: Registry for the audit service image"
-        type: "string"
-        immutable: false
-        required: true
     repository:
       __metadata:
         label: "Repository"
         description: "Docker image location"
         type: "string"
         required: true
-    tag:
-      __metadata:
-        label: "Tag"
-        description: "Docker image tag"
-        type: "string"
-        required: false
     pullPolicy:
       __metadata:
         label: "Image pull policy"
@@ -573,19 +513,11 @@ tiller:
         required: true
         immutable: false
   image:
-    name:
+    repository:
       __metadata:
-        label: "Service name"
-        description: "Tiller component name"
+        label: "Repository"
+        description: "Docker image location"
         type: "string"
-        required: true
-    imageRegistry:
-      __metadata:
-        name: "imageRegistry"
-        label: "Image Registry"
-        description: "helmapi.image.imageRegistry: Registry for the tiller image"
-        type: "string"
-        immutable: false
         required: true
     pullPolicy:
       __metadata:
@@ -600,18 +532,6 @@ tiller:
           value: "Never"
         - label: "IfNotPresent"
           value: "IfNotPresent"
-    repository:
-      __metadata:
-        label: "Repository"
-        description: "Docker image location"
-        type: "string"
-        required: true
-    tag:
-      __metadata:
-        label: "Tag"
-        description: "Docker image tag"
-        type: "string"
-        required: false
   nodePort:
       __metadata:
         label: "Tiller service port"

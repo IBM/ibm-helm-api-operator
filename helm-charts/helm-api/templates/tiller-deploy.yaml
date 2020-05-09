@@ -101,11 +101,7 @@ spec:
           value: "{{ .Values.tiller.defaultAdminUser }}"
         - name: CLUSTER_PORT
           value: "443"
-      {{- if .Values.tiller.image.sha }}
-        image: "{{ .Values.tiller.image.imageRegistry }}/{{ .Values.tiller.image.repository }}@{{ .Values.tiller.image.sha }}"
-      {{- else }}
-        image: "{{ .Values.tiller.image.imageRegistry }}/{{ .Values.tiller.image.repository }}:{{ .Values.tiller.image.tag }}"
-      {{- end }}
+        image: {{ .Values.tiller.image.repository }}
         imagePullPolicy: {{ .Values.tiller.image.pullPolicy }}
         livenessProbe:
           httpGet:
@@ -117,7 +113,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
-        name: {{ .Values.tiller.image.name }}
+        name: tiller
         securityContext:
           runAsNonRoot: true
           runAsUser: {{ .Values.runAsUser }}
@@ -146,6 +142,7 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       serviceAccount: ibm-helm-tiller-operand
+      serviceAccountName: ibm-helm-tiller-operand
       terminationGracePeriodSeconds: 30
       tolerations:
       - effect: NoSchedule

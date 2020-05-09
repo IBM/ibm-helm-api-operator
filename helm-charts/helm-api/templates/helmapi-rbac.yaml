@@ -4,7 +4,6 @@ kind: ServiceAccount
 metadata: 
   name: ibm-helm-api-operand
   labels:
-    name: ibm-helm-api-operand
     app.kubernetes.io/instance: "{{ .Release.Name }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
     app.kubernetes.io/name: "helm-api"
@@ -15,7 +14,6 @@ kind: ClusterRole
 metadata:
   name: ibm-helm-api-operand
   labels:
-    name: ibm-helm-api-operand
     app.kubernetes.io/instance: "{{ .Release.Name }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
     app.kubernetes.io/name: "helm-api"
@@ -80,7 +78,6 @@ kind: ClusterRoleBinding
 metadata:
   name: ibm-helm-api-operand
   labels:
-    name: ibm-helm-api-operand
     app.kubernetes.io/instance: "{{ .Release.Name }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
     app.kubernetes.io/name: "helm-api"

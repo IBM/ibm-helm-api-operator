@@ -3,3 +3,8 @@
   group: operator.ibm.com
   kind: HelmAPI
   chart: helm-charts/helm-api
+  overrideValues:
+    auditService.image.repository: ${OPERAND_AUDIT_SERVICE_IMAGE}
+    helmapi.image.repository: ${OPERAND_HELM_API_IMAGE}
+    rudder.image.repository: ${OPERAND_RUDDER_IMAGE}
+    tiller.image.repository: ${OPERAND_TILLER_IMAGE}

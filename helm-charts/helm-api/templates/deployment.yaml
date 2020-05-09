@@ -36,6 +36,7 @@ spec:
         helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       serviceAccount: ibm-helm-api-operand
+      serviceAccountName: ibm-helm-api-operand
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -50,29 +51,18 @@ spec:
       hostNetwork: false
       hostPID: false
       hostIPC: false
-      securityContext:
-        runAsNonRoot: true
-        {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
-        runAsUser: {{ .Values.runAsUser }}
-        {{- end }} 
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
       containers:
       {{ if .Values.auditService.config.enabled }}
-      - name: {{ .Values.auditService.name }}
-      {{- if .Values.auditService.image.sha }}
-        image: "{{ .Values.auditService.image.imageRegistry }}/{{ .Values.auditService.image.repository }}@{{ .Values.auditService.image.sha }}"
-      {{- else }}
-        image: "{{ .Values.auditService.image.imageRegistry }}/{{ .Values.auditService.image.repository }}:{{ .Values.auditService.image.tag }}"
-      {{- end }}
+      - name: icp-audit-service
+        image: {{ .Values.auditService.image.repository }}
         imagePullPolicy: {{ .Values.auditService.image.pullPolicy }}
         securityContext:
           seLinuxOptions:
             type: spc_t
           runAsNonRoot: true
-          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
           runAsUser: {{ .Values.runAsUser }}
-          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true
@@ -93,22 +83,16 @@ spec:
             memory: {{ .Values.auditService.resources.requests.memory }}
       {{ end }}
       
-      - name: {{ .Values.rudder.image.name }}
-      {{- if .Values.rudder.image.sha }}
-        image: "{{ .Values.rudder.image.imageRegistry }}/{{ .Values.rudder.image.repository }}@{{ .Values.rudder.image.sha }}"
-      {{- else }}
-        image: "{{ .Values.rudder.image.imageRegistry }}/{{ .Values.rudder.image.repository }}:{{ .Values.rudder.image.tag }}"
-      {{- end }}
-        imagePullPolicy: "{{ .Values.rudder.image.pullPolicy }}"
+      - name: rudder
+        image: {{ .Values.rudder.image.repository }}
+        imagePullPolicy: {{ .Values.rudder.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.rudder.ports.containerPort }}
           name: "{{ .Values.rudder.ports.containerPortName }}"
           protocol: "{{ .Values.rudder.ports.protocol }}"
         securityContext:
           runAsNonRoot: true
-          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
           runAsUser: {{ .Values.runAsUser }}
-          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true
@@ -147,18 +131,12 @@ spec:
         resources:
 {{ toYaml .Values.rudder.resources | indent 10 }}
 
-      - name: {{ .Values.helmapi.image.name }}
-      {{- if .Values.helmapi.image.sha }}
-        image: "{{ .Values.helmapi.image.imageRegistry }}/{{ .Values.helmapi.image.repository }}@{{ .Values.helmapi.image.sha }}"
-      {{- else }}
-        image: "{{ .Values.helmapi.image.imageRegistry }}/{{ .Values.helmapi.image.repository }}:{{ .Values.helmapi.image.tag }}"
-      {{- end }}
+      - name: helmapi
+        image: {{ .Values.helmapi.image.repository }}
         imagePullPolicy: {{ .Values.helmapi.image.pullPolicy }}
         securityContext:
           runAsNonRoot: true
-          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
           runAsUser: {{ .Values.runAsUser }}
-          {{- end }}
           allowPrivilegeEscalation: false
           privileged: false
           readOnlyRootFilesystem: true
@@ -197,9 +175,9 @@ spec:
         - name: shared
           mountPath: "/var/log/audit"
         {{ end }}
-
         resources:
 {{ toYaml .Values.helmapi.resources | indent 10 }}
+
         ports:
         - containerPort: {{ .Values.helmapi.service.port }}
           name: {{ .Values.helmapi.service.name }}
@@ -275,7 +253,6 @@ spec:
               fieldPath: metadata.name
         - name: POD_NAMESPACE
           value: {{ .Release.Namespace }}
-
       volumes:
       - name: {{ .Values.volumes.mongoClientCertName }}
         secret:
