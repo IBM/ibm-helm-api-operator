@@ -8,7 +8,7 @@ Operator used to manager IBM Helm API service. Helm API provides REST endpoints 
 
 ### Platforms
 
-- Red Hat OpenShift Container Plataform 4.x
+- Red Hat OpenShift Container Platform 4.3 and above
 
 ### Operating Systems
 

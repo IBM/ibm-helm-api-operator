@@ -2,21 +2,16 @@ apiVersion: operator.ibm.com/v1alpha1
 kind: HelmAPI
 metadata:
   name: helm-api
+  annotations:
+    helm.operator-sdk/upgrade-force: "True"
   labels:
-      name: ibm-helm-api-operator
-      app.kubernetes.io/instance: helmapis.operator.ibm.com
-      app.kubernetes.io/managed-by: helmapis.operator.ibm.com
-      app.kubernetes.io/name: helmapis.operator.ibm.com
+    app.kubernetes.io/instance: helmapis.operator.ibm.com
+    app.kubernetes.io/managed-by: helmapis.operator.ibm.com
+    app.kubernetes.io/name: helm-api
 spec:
   auditService:
     config:
       enabled: true
-    image:
-      imageRegistry: quay.io/opencloudio
-      pullPolicy: IfNotPresent
-      repository: icp-audit-service
-      tag: 3.4.0
-      sha: "sha256:334fae7bd3ae4c04611f4e82207a2f7836dbc589f7fc2b3cd172bd93572bfe16"
     resources:
       limits:
         cpu: 200m
@@ -29,12 +24,6 @@ spec:
       HTTP_PROXY: ""
       HTTPS_PROXY: ""
       NO_PROXY: mycluster.icp,mongodb,platform-identity-provider,platform-identity-management,icp-management-ingress,iam-pap,localhost,127.0.0.1
-    image:
-      imageRegistry: quay.io/opencloudio
-      pullPolicy: IfNotPresent
-      repository: icp-helm-api
-      tag: 3.3.0
-      sha: "sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4"
     resources:
       limits:
         cpu: 300m
@@ -44,12 +33,6 @@ spec:
         memory: 400Mi
   replicaCount: 1
   rudder:
-    image:
-      imageRegistry: quay.io/opencloudio
-      pullPolicy: IfNotPresent
-      repository: icp-helm-rudder
-      tag: 3.3.0
-      sha: "sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7"
     resources:
       limits:
         cpu: 150m
@@ -58,12 +41,6 @@ spec:
         cpu: 150m
         memory: 128Mi
   tiller:
-    image:
-      imageRegistry: quay.io/opencloudio
-      pullPolicy: IfNotPresent
-      repository: tiller
-      tag: v2.16.1-cs-3.3.0
-      sha: "sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f"
     resources:
       limits:
         cpu: 100m
