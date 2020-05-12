@@ -3,7 +3,7 @@
 # US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 images:	
 - image: icp-helm-api:3.3.0
-    references:
+  references:
   - repository: icp-helm-api:3.3.0
     pull-repository: quay.io/opencloudio/icp-helm-api:3.3.0
     platform:
