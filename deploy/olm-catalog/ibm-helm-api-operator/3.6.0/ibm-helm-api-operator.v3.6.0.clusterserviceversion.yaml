@@ -12,7 +12,7 @@ metadata:
               "helm.operator-sdk/upgrade-force": "True"
             },
             "labels": {
-              "app.kubernetes.io/instance": "helm-api,
+              "app.kubernetes.io/instance": "helm-api",
               "app.kubernetes.io/managed-by": "helmapis.operator.ibm.com",
               "app.kubernetes.io/name": "helm-api"
             },
