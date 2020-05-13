@@ -58,11 +58,11 @@ spec:
             - name: OPERAND_AUDIT_SERVICE_IMAGE
               value: "quay.io/opencloudio/icp-audit-service@sha256:24a220374c39652f8b031637d852995bfaec5be2601f9e4c41eb1925531f466d"
             - name: OPERAND_HELM_API_IMAGE
-              value: "quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4"  
+              value: "quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214"  
             - name: OPERAND_RUDDER_IMAGE
-              value: "quay.io/opencloudio/icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7"
+              value: "quay.io/opencloudio/icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af"
             - name: OPERAND_TILLER_IMAGE
-              value: "quay.io/opencloudio/tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f"
+              value: "quay.io/opencloudio/tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47"
           resources:
             limits:
               cpu: 150m
