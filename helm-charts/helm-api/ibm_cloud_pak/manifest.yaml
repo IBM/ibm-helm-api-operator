@@ -2,37 +2,37 @@
 # (C) Copyright IBM Corporation 2016, 2019. All Rights Reserved.
 # US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 images:	
-- image: icp-helm-api:3.3.0
+- image: icp-helm-api:3.4.1
   references:
-  - repository: icp-helm-api:3.3.0
-    pull-repository: quay.io/opencloudio/icp-helm-api:3.3.0
+  - repository: icp-helm-api:3.4.1
+    pull-repository: quay.io/opencloudio/icp-helm-api:3.4.1
     platform:
       os: linux
       arch: amd64
-  - repository: icp-helm-api:3.3.0
-    pull-repository: quay.io/opencloudio/icp-helm-api:3.3.0
+  - repository: icp-helm-api:3.4.1
+    pull-repository: quay.io/opencloudio/icp-helm-api:3.4.1
     platform:
       os: linux
       arch: ppc64le
-  - repository: icp-helm-api:3.3.0
-    pull-repository: quay.io/opencloudio/icp-helm-api:3.3.0
+  - repository: icp-helm-api:3.4.1
+    pull-repository: quay.io/opencloudio/icp-helm-api:3.4.1
     platform:
       os: linux
       arch: s390x
-- image: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+- image: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
   references:
-  - repository: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
-    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+  - repository: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
     platform:
       os: linux
       arch: amd64
-  - repository: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
-    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+  - repository: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
     platform:
       os: linux
       arch: ppc64le
-  - repository: icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
-    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:8551180b18e4273775e258ebf3680ab7096ddd68d5d6e01b65e5c3c9661fffb4
+  - repository: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
     platform:
       os: linux
       arch: s390x
@@ -71,72 +71,72 @@ images:
       os: linux
       arch: s390x
 
-- image: icp-helm-rudder:3.3.0
+- image: icp-helm-rudder:3.3.1
   references:	
-  - repository : icp-helm-rudder:3.3.0-amd64
-    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.0-amd64
+  - repository : icp-helm-rudder:3.3.1-amd64
+    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.1-amd64
     platform:
       os: linux
       arch: amd64
-  - repository : icp-helm-rudder:3.3.0-ppc64le
-    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.0-ppc64le
+  - repository : icp-helm-rudder:3.3.1-ppc64le
+    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.1-ppc64le
     platform:
       os: linux
       arch: ppc64le
-  - repository : icp-helm-rudder:3.3.0-s390x
-    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.0-s390x
+  - repository : icp-helm-rudder:3.3.1-s390x
+    pull-repository: quay.io/opencloudio/icp-helm-rudder:3.3.1-s390x
     platform:
       os: linux
       arch: s390x
-- image: icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
+- image: icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
   references:	
-  - repository : icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
-    pull-repository: quay.io/opencloudio/icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
+  - repository : icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
+    pull-repository: quay.io/opencloudio/icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
     platform:
       os: linux
       arch: amd64
-  - repository : icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
-    pull-repository: quay.io/opencloudio/icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
+  - repository : icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
+    pull-repository: quay.io/opencloudio/icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
     platform:
       os: linux
       arch: ppc64le
-  - repository : icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
-    pull-repository: quay.io/opencloudio/icp-helm-rudder@sha256:5eba2b4052eb80a7ed1e0a91f3e0bcd1e4ae8412e604cfd4dc990daf2e9da9c7
+  - repository : icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
+    pull-repository: quay.io/opencloudio/icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
     platform:
       os: linux
       arch: s390x
 
-- image: tiller:v2.16.1-cs-3.3.0
+- image: tiller:v2.16.1-cs-3.3.1
   references:	
-  - repository : tiller:v2.16.1-cs-3.3.0-amd64
-    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.0-amd64
+  - repository : tiller:v2.16.1-cs-3.3.1-amd64
+    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.1-amd64
     platform:
       os: linux
       arch: amd64
-  - repository : tiller:v2.16.1-cs-3.3.0-ppc64le
-    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.0-ppc64le
+  - repository : tiller:v2.16.1-cs-3.3.1-ppc64le
+    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.1-ppc64le
     platform:
       os: linux
       arch: ppc64le
-  - repository : tiller:v2.16.1-cs-3.3.0-s390x
-    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.0-s390x
+  - repository : tiller:v2.16.1-cs-3.3.1-s390x
+    pull-repository: quay.io/opencloudio/tiller:v2.16.1-cs-3.3.1-s390x
     platform:
       os: linux
       arch: s390x
-- image: tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
+- image: tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
   references:	
-  - repository : tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
-    pull-repository: quay.io/opencloudio/tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
+  - repository : tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
+    pull-repository: quay.io/opencloudio/tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
     platform:
       os: linux
       arch: amd64
-  - repository : tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
-    pull-repository: quay.io/opencloudio/tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
+  - repository : tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
+    pull-repository: quay.io/opencloudio/tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
     platform:
       os: linux
       arch: ppc64le
-  - repository : tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
-    pull-repository: quay.io/opencloudio/tiller@sha256:bce0b2a08c309e41f08b5026d1a3904c271b09a2071d0380b90b47aae050cd7f
+  - repository : tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
+    pull-repository: quay.io/opencloudio/tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
     platform:
       os: linux
       arch: s390x 
