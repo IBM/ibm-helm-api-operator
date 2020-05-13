@@ -4,7 +4,7 @@ metadata:
   name: helmapis.operator.ibm.com
   labels:
       name: ibm-helm-api-operator
-      app.kubernetes.io/instance: helmapis.operator.ibm.com
+      app.kubernetes.io/instance: helm-api
       app.kubernetes.io/managed-by: helmapis.operator.ibm.com
       app.kubernetes.io/name: helmapis.operator.ibm.com
 spec:
