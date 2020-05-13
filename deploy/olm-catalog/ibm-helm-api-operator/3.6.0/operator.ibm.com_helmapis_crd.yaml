@@ -57,8 +57,6 @@ spec:
                           type: string
                       type: object
                   type: object
-                name:
-                  type: string
             helmapi:
               properties:
                 env:
