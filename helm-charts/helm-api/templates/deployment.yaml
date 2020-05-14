@@ -54,7 +54,7 @@ spec:
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
       containers:
-      {{ if .Values.auditService.config.enabled }}
+      {{ if eq ( .Values.auditService.config.enabled | default "false" ) "true" }}
       - name: icp-audit-service
         image: {{ .Values.auditService.image.repository }}
         imagePullPolicy: {{ .Values.auditService.image.pullPolicy }}
@@ -171,7 +171,7 @@ spec:
           mountPath: {{ .Values.helmapi.volumeMounts.helmApiCertsMountPath}}
         - name: {{ .Values.helmapi.sharedassets.name }}
           mountPath: {{ .Values.helmapi.sharedassets.path }}
-        {{ if .Values.auditService.config.enabled }}
+        {{ if eq ( .Values.auditService.config.enabled | default "false" ) "true" }}
         - name: shared
           mountPath: "/var/log/audit"
         {{ end }}
@@ -270,7 +270,7 @@ spec:
         emptyDir: {}
       - name: {{ .Values.rudder.volumeMounts.rudderCacheName }}
         emptyDir: {}
-      {{ if .Values.auditService.config.enabled }}
+      {{ if eq ( .Values.auditService.config.enabled | default "false" ) "true" }}
       - name: journal
         hostPath:
           path: /run/systemd/journal

@@ -4,6 +4,7 @@
   kind: HelmAPI
   chart: helm-charts/helm-api
   overrideValues:
+    auditService.config.enabled: ${OPERAND_AUDIT_SERVICE_ENABLED}
     auditService.image.repository: ${OPERAND_AUDIT_SERVICE_IMAGE}
     helmapi.image.repository: ${OPERAND_HELM_API_IMAGE}
     rudder.image.repository: ${OPERAND_RUDDER_IMAGE}
