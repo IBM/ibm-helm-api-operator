@@ -98,11 +98,12 @@ metadata:
     capabilities: Seamless Upgrades
     categories: Developer Tools
     certified: "false"
-    containerImage: quay.io/opencloudio/ibm-helm-api-operator:latest
-    createdAt: "2020-03-24T01:00:00Z"
+    containerImage: quay.io/opencloudio/ibm-helm-api-operator@sha256:4781e81eb1aef214560f1ce1a55924ce54f32a3c893fa215270dddfeb4e9c80b
+    createdAt: "2020-05-16"
     description: The HelmAPI operator provides a simple Kubernetes CRD-Based API to
       manage the lifecycle of HelmAPI. With this operator, you can simply deploy and
       upgrade helm-api.
+    olm.skipRange: ">=3.5.0 <3.6.0"
     repository: https://github.com/IBM/ibm-helm-api-operator
     support: IBM
   name: ibm-helm-api-operator.v3.6.0
@@ -258,7 +259,7 @@ spec:
                   value: quay.io/opencloudio/icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
                 - name: OPERAND_TILLER_IMAGE
                   value: quay.io/opencloudio/tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
-                image: quay.io/opencloudio/ibm-helm-api-operator:latest
+                image: quay.io/opencloudio/ibm-helm-api-operator@sha256:4781e81eb1aef214560f1ce1a55924ce54f32a3c893fa215270dddfeb4e9c80b
                 imagePullPolicy: Always
                 name: ibm-helm-api-operator
                 resources:
