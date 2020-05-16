@@ -42,7 +42,7 @@ spec:
                   - s390x
       containers:
         - name: ibm-helm-api-operator
-          image: quay.io/opencloudio/ibm-helm-api-operator:latest
+          image: quay.io/opencloudio/ibm-helm-api-operator@sha256:4781e81eb1aef214560f1ce1a55924ce54f32a3c893fa215270dddfeb4e9c80b
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
