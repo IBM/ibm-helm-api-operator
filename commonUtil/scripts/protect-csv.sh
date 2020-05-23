@@ -57,3 +57,5 @@ protect_csv "${STABLE_CSV}" "stable-v1" "${OPERATOR_NAME}"
 # protect beta channel
 BETA_CSV=$(yq r "${PACKAGE_FILE}" "channels.(name==beta).currentCSV")
 protect_csv "${BETA_CSV}" "beta" "${OPERATOR_NAME}"
+
+success "CSV check ok"
