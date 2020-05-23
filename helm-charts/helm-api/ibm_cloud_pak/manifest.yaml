@@ -2,20 +2,20 @@
 # (C) Copyright IBM Corporation 2016, 2019. All Rights Reserved.
 # US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 images:	
-- image: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
+- image: icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
   references:
-  - repository: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
-    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
+  - repository: icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
     platform:
       os: linux
       arch: amd64
-  - repository: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
-    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
+  - repository: icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
     platform:
       os: linux
       arch: ppc64le
-  - repository: icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
-    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214
+  - repository: icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
+    pull-repository: quay.io/opencloudio/icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
     platform:
       os: linux
       arch: s390x
