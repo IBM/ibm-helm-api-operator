@@ -42,7 +42,7 @@ spec:
                   - s390x
       containers:
         - name: ibm-helm-api-operator
-          image: quay.io/opencloudio/ibm-helm-api-operator@sha256:4781e81eb1aef214560f1ce1a55924ce54f32a3c893fa215270dddfeb4e9c80b
+          image: quay.io/opencloudio/ibm-helm-api-operator:latest
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
@@ -60,7 +60,7 @@ spec:
             - name: OPERAND_AUDIT_SERVICE_IMAGE
               value: "quay.io/opencloudio/icp-audit-service@sha256:24a220374c39652f8b031637d852995bfaec5be2601f9e4c41eb1925531f466d"
             - name: OPERAND_HELM_API_IMAGE
-              value: "quay.io/opencloudio/icp-helm-api@sha256:e73ac971497212eb3b8904918aa975136c8e8e8c47a520273e51e65fd9bff214"  
+              value: "quay.io/opencloudio/icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f"  
             - name: OPERAND_RUDDER_IMAGE
               value: "quay.io/opencloudio/icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af"
             - name: OPERAND_TILLER_IMAGE
