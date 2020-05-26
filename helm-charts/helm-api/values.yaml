@@ -32,7 +32,7 @@ helmapi:
     WLP_REDIRECT_URL: http://localhost:3000/auth/liberty/callback
   image:
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/icp-helm-api@sha256:78ad65696a3b51cb37540e721fa185d99f86eb90061141c14dc01647602d5a9f
+    repository: quay.io/opencloudio/icp-helm-api@sha256:1a803b1bd2aeae819f35eae46cc333f092dda19d2f647182b2cefd76ebbe0a7d
   resources:
     limits:
       cpu: 300m
