@@ -103,7 +103,7 @@ metadata:
     description: The HelmAPI operator provides a simple Kubernetes CRD-Based API to
       manage the lifecycle of HelmAPI. With this operator, you can simply deploy and
       upgrade helm-api.
-    olm.skipRange: ">=3.5.0 <3.6.2"
+    olm.skipRange: '>=3.5.0 <3.6.2'
     repository: https://github.com/IBM/ibm-helm-api-operator
     support: IBM
   name: ibm-helm-api-operator.v3.6.2
@@ -251,13 +251,13 @@ spec:
                 - name: OPERAND_AUDIT_SERVICE_ENABLED
                   value: "false"
                 - name: OPERAND_AUDIT_SERVICE_IMAGE
-                  value: quay.io/opencloudio/icp-audit-service@sha256:24a220374c39652f8b031637d852995bfaec5be2601f9e4c41eb1925531f466d
+                  value: quay.io/opencloudio/icp-audit-service@sha256:a649814564039ee923cb503720e9c5e87c20b3c340f06c48660490aeaed04d5a
                 - name: OPERAND_HELM_API_IMAGE
-                  value: quay.io/opencloudio/icp-helm-api@sha256:22c535980cacbc4152eb1a9c3954f669c5078a0d8a320836d2ac63a2616b589a
+                  value: quay.io/opencloudio/icp-helm-api@sha256:180ba26c051224130fa4add09e5180863cd3f4a7d1df40ec64d91daaef3ed5c8
                 - name: OPERAND_RUDDER_IMAGE
-                  value: quay.io/opencloudio/icp-helm-rudder@sha256:437c980277a700f7f53db1ac88ae1d10488033b52422bf17654a82717c6f22af
+                  value: quay.io/opencloudio/icp-helm-rudder@sha256:498e00e38da744fb56a73a3396f033b9542176e49fddfa444352e9a0edf75a6c
                 - name: OPERAND_TILLER_IMAGE
-                  value: quay.io/opencloudio/tiller@sha256:a7539700cdc49623efd9c049760d9b5c32329c498be55f30a87835afdc43fe47
+                  value: quay.io/opencloudio/tiller@sha256:00e748aca859fa17e7e0771c17795714eb8596b05876e15d9204266d3966da1b
                 image: quay.io/opencloudio/ibm-helm-api-operator:latest
                 imagePullPolicy: Always
                 name: ibm-helm-api-operator
