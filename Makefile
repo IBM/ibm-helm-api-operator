@@ -216,7 +216,9 @@ clean-cluster: ## Clean up all the artifacts left in cluster
 	- kubectl -n ${NAMESPACE} get serviceaccounts -o name | grep helm-api | xargs kubectl -n ${NAMESPACE} delete
 	- kubectl -n ${NAMESPACE} delete certificate helm-api --ignore-not-found=true
 	- kubectl -n ${NAMESPACE} delete certificate rudder --ignore-not-found=true
+	- kubectl -n ${NAMESPACE} delete certificate tiller-deploy --ignore-not-found=true
 	- kubectl -n ${NAMESPACE} delete secret helm-tiller-secret --ignore-not-found=true
+	- kubectl -n ${NAMESPACE} delete secret helmapi-secret --ignore-not-found=true
 	- kubectl -n ${NAMESPACE} delete secret rudder-secret --ignore-not-found=true
 	- kubectl -n ${NAMESPACE} delete secret tiller-secret --ignore-not-found=true
 	- kubectl -n ${NAMESPACE} delete configmap tiller-serviceid-policies --ignore-not-found=true
