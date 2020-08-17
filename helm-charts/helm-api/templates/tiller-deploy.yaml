@@ -78,6 +78,15 @@ spec:
                   - amd64
                   - ppc64le
                   - s390x
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - helm
+            topologyKey: "kubernetes.io/hostname"
       containers:
       - env:
         - name: IAM_HOST
