@@ -78,10 +78,10 @@ rudder:
   resources:
     limits:
       cpu: 150m
-      memory: 128Mi
+      memory: 256Mi
     requests:
       cpu: 150m
-      memory: 128Mi
+      memory: 256Mi
   volumeMounts:
     rudderCacheMountPath: /opt/rudder/cache
     rudderCacheName: rudder-cache
@@ -97,10 +97,10 @@ tiller:
   resources:
     limits:
       cpu: 100m
-      memory: 128Mi
+      memory: 256Mi
     requests:
       cpu: 100m
-      memory: 128Mi
+      memory: 256Mi
 tolerations:
 - effect: NoSchedule
   key: dedicated
