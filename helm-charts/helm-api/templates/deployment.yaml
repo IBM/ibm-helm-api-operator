@@ -47,6 +47,15 @@ spec:
                   - amd64
                   - ppc64le
                   - s390x
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - helm-api
+            topologyKey: "kubernetes.io/hostname"
       hostNetwork: false
       hostPID: false
       hostIPC: false
