@@ -39,6 +39,33 @@ spec:
                   - amd64
                   - ppc64le
                   - s390x
+      initContainers:
+      - name: pre-install
+        command:
+        - /bin/sh
+        - -c
+        - |
+          kubectl delete secret helmapi-secret --ignore-not-found=true
+          kubectl delete secret rudder-secret --ignore-not-found=true
+          kubectl delete secret tiller-secret --ignore-not-found=true
+        image: quay.io/opencloudio/kubectl@sha256:c5ee37c2dd2f34c155faabc88f7b4e4d79646f8947ef6517fcb8c78ddf143356
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1002
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
       containers:
         - name: ibm-helm-api-operator
           image: quay.io/opencloudio/ibm-helm-api-operator:latest
