@@ -248,7 +248,7 @@ spec:
                 - name: OPERAND_AUDIT_SERVICE_ENABLED
                   value: "false"
                 - name: OPERAND_AUDIT_SERVICE_IMAGE
-                  value: quay.io/opencloudio/icp-audit-service@sha256:a649814564039ee923cb503720e9c5e87c20b3c340f06c48660490aeaed04d5a
+                  value: quay.io/opencloudio/icp-audit-service@sha256:3cfb9f3cc99379758f73f1cd2e6ad4dd4bc61e13cc55d7c34b0d0e280cb47421
                 - name: OPERAND_HELM_API_IMAGE
                   value: quay.io/opencloudio/icp-helm-api@sha256:180ba26c051224130fa4add09e5180863cd3f4a7d1df40ec64d91daaef3ed5c8
                 - name: OPERAND_RUDDER_IMAGE
