@@ -255,11 +255,11 @@ spec:
                 - name: OPERAND_AUDIT_SERVICE_IMAGE
                   value: quay.io/opencloudio/icp-audit-service@sha256:3cfb9f3cc99379758f73f1cd2e6ad4dd4bc61e13cc55d7c34b0d0e280cb47421
                 - name: OPERAND_HELM_API_IMAGE
-                  value: quay.io/opencloudio/icp-helm-api@sha256:180ba26c051224130fa4add09e5180863cd3f4a7d1df40ec64d91daaef3ed5c8
+                  value: quay.io/opencloudio/icp-helm-api@sha256:b3778e94d006ce90234c8168006b138207b5c662578ed67f1141ab4b3e71f503
                 - name: OPERAND_RUDDER_IMAGE
-                  value: quay.io/opencloudio/icp-helm-rudder@sha256:498e00e38da744fb56a73a3396f033b9542176e49fddfa444352e9a0edf75a6c
+                  value: quay.io/opencloudio/icp-helm-rudder@sha256:1b6234ce0ac6714f60158a42b88cd1396ce4c9b3e59f3e1c3a22676440057376
                 - name: OPERAND_TILLER_IMAGE
-                  value: quay.io/opencloudio/tiller@sha256:00e748aca859fa17e7e0771c17795714eb8596b05876e15d9204266d3966da1b
+                  value: quay.io/opencloudio/tiller@sha256:d241fed2d4c567a8f9630fa0dbfa9030ea87ddd4e18a29db309f818cd01d1189
                 image: quay.io/opencloudio/ibm-helm-api-operator:latest
                 imagePullPolicy: Always
                 name: ibm-helm-api-operator
