@@ -32,7 +32,7 @@ helmapi:
     WLP_REDIRECT_URL: http://localhost:3000/auth/liberty/callback
   image:
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/icp-helm-api@sha256:b3778e94d006ce90234c8168006b138207b5c662578ed67f1141ab4b3e71f503
+    repository: quay.io/opencloudio/icp-helm-api@sha256:799ca09fe8c3e099c8b7a5e3c37de5248e5477856c34fb2ffeb15e6e94800aa1
   resources:
     limits:
       cpu: 300m
@@ -70,7 +70,7 @@ rudder:
     USE_TLS: "true"
   image:
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/icp-helm-rudder@sha256:1b6234ce0ac6714f60158a42b88cd1396ce4c9b3e59f3e1c3a22676440057376
+    repository: quay.io/opencloudio/icp-helm-rudder@sha256:f8eb8e68d78baae61deff5361b39e073daead75f5efff829671d36c3b75892b7
   ports:
     containerPort: 5000
     containerPortName: p5000
@@ -92,7 +92,7 @@ tiller:
   defaultAdminUser: admin
   image:
     pullPolicy: IfNotPresent
-    repository: quay.io/opencloudio/tiller@sha256:d241fed2d4c567a8f9630fa0dbfa9030ea87ddd4e18a29db309f818cd01d1189
+    repository: quay.io/opencloudio/tiller@sha256:1119c22e41d062bab9e7431c50345118b90449d972fd9e5b6e5dc22602ad14cf
   nodePort: 31514
   resources:
     limits:
